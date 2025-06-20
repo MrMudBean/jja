@@ -1,4 +1,4 @@
-import { Dog } from '@qqi/dev-log';
+import { Dog } from '@qqi/log';
 import { isFalse } from 'a-type-of-js';
 
 /**  dev log  */

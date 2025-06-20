@@ -1,5 +1,6 @@
 import { npmPkgInfoType, npmRegistry, PackageJson } from 'a-node-tools';
-import { isUndefined } from 'a-type-of-js';
+import { isEmptyObject, isNull, isString, isUndefined } from 'a-type-of-js';
+import { command } from 'src/command';
 
 /**
  *
@@ -8,7 +9,11 @@ import { isUndefined } from 'a-type-of-js';
  */
 export const diffData: {
   /**  本地 package.json 数据  */
-  local: PackageJson | null;
+  local: PackageJson<{
+    overrides: {
+      [x: string]: string;
+    };
+  }> | null;
   /**  pkg npm 线上数据  */
   online: npmPkgInfoType | null;
   /**  依赖信息  */
@@ -53,22 +58,26 @@ export const diffData: {
   latestDependence: [],
   binning: function (list, isDev = false): void {
     /// 空直接返回
-    if (isUndefined(list)) return;
+    if (isUndefined(list) || isEmptyObject(list) || isNull(this.local)) return;
+
+    const { overrides } = this.local;
 
     /// 循环遍历
     for (const key in list) {
-      if (Object.prototype.hasOwnProperty.call(list, key)) {
-        const element = list[key];
-        this.dependenceList[key] = {
-          type: isDev ? 'devDependencies' : 'dependencies',
-          version: element,
-          localVersion: '',
-          latestVersion: '',
-          onlineVersion: '',
-          tag: '',
-          time: '',
-        };
+      if (isString(overrides[key])) {
+        command.WARN(`${key} 被锁定在 ${overrides[key]}`);
+        continue;
       }
+      const element = list[key];
+      this.dependenceList[key] = {
+        type: isDev ? 'devDependencies' : 'dependencies',
+        version: element,
+        localVersion: '',
+        latestVersion: '',
+        onlineVersion: '',
+        tag: '',
+        time: '',
+      };
     }
   },
   preReleaseDependence: [],

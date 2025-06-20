@@ -27,12 +27,16 @@ export async function getVersion(): Promise<void> {
     return;
   }
   // 获取文件
-  const packageInfo = readFileToJsonSync<PackageJson>(
-    pathJoin(currentWordDirectory, 'package.json'),
-  );
+  const packageInfo = readFileToJsonSync<
+    PackageJson & {
+      overrides: {
+        [x: string]: string;
+      };
+    }
+  >(pathJoin(currentWordDirectory, 'package.json'));
 
   if (isNull(packageInfo)) {
-    dog.error('未找到当前包的 package.json 文件，改事件发生的概率极低');
+    dog.error('未找到当前包的 package.json 文件，该事件发生的概率极低');
     return;
   }
 

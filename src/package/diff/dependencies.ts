@@ -33,9 +33,7 @@ export async function dependencies() {
   } = diffData;
 
   // 值为空直接返回
-  if (isNull(local)) {
-    return;
-  }
+  if (isNull(local)) return;
 
   const { dependencies, devDependencies } = local;
 
@@ -49,19 +47,13 @@ export async function dependencies() {
     preReleaseDependence.length === 0 &&
     latestDependence.length === 0 &&
     timeoutDependence.length === 0
-  ) {
-    _p(pen666`看起来似乎没有依赖版本差异`);
-    return;
-  } else if (
-    preReleaseDependence.length === 0 &&
-    latestDependence.length === 0
-  ) {
+  )
+    return _p(pen666`看起来似乎没有依赖版本差异`);
+  else if (preReleaseDependence.length === 0 && latestDependence.length === 0)
     // 所有包都出现了故障
-    _p(
+    return _p(
       redPen`看起来网络不太好讷，所有的包线上版本的请求都出错了。或者是还没有执行 npm install 呐`,
     );
-    return;
-  }
 
   _p(pen.brightGreen`\n版本差异的依赖为：\n`);
 
