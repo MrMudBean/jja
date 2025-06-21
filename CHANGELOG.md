@@ -1,5 +1,9 @@
 # jolly job aid
 
+## v2.3.10 (2025-6-21)
+
+- 修复已知 bug
+
 ## v2.3.9 (2025-6-21)
 
 - 在使用 `pkg` 的 `--diff` 参数时，现在过滤 'package.json' 的 'overrides' 配置的依赖项，展示效果如下

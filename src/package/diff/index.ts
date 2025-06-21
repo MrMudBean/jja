@@ -47,8 +47,6 @@ export async function diffPackage(
     ).toLocaleString();
 
     command.INFO(`最后的发布时间为： ${publishTime.toString()}`);
-
-    colorLine();
     colorLine();
   }
 

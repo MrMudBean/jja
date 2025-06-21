@@ -10,7 +10,7 @@ import { command } from 'src/command';
 export const diffData: {
   /**  本地 package.json 数据  */
   local: PackageJson<{
-    overrides: {
+    overrides?: {
       [x: string]: string;
     };
   }> | null;
@@ -64,7 +64,7 @@ export const diffData: {
 
     /// 循环遍历
     for (const key in list) {
-      if (isString(overrides[key])) {
+      if (isString(overrides?.[key])) {
         command.WARN(`${key} 被锁定在 ${overrides[key]}`);
         continue;
       }

@@ -12,7 +12,7 @@ export default {
   output: {
     format: 'es',
     entryFileNames: '[name].mjs',
-    preserveModules: true,
+    preserveModules: false,
     sourcemap: false,
     exports: 'named',
     dir: 'dist/',
