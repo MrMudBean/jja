@@ -4,7 +4,7 @@ import { isNull } from 'a-type-of-js';
 import { diffData } from './data-store';
 
 /**
- * 获取给定包的最新版本号
+ * 获取给定包的最新版本号（线上数据）
  */
 export async function getLatestVersion(pkgName: string) {
   /**  获取线上信息  */
@@ -20,6 +20,8 @@ export async function getLatestVersion(pkgName: string) {
     dog.warn('获取包信息失败');
     return;
   }
+  const startTime = Date.now();
+  dog('获取数据', pkgName, '包信息');
 
   const pkgInfo = diffData.dependenceList[pkgName];
 
@@ -34,6 +36,7 @@ export async function getLatestVersion(pkgName: string) {
 
   const tagKey = Object.keys(tags);
 
+  dog('共需比对', tagKey.length);
   for (let i = 0, j = tagKey.length; i < j; i++) {
     const tag = tagKey[i];
     const version = tags[tag];
@@ -42,6 +45,8 @@ export async function getLatestVersion(pkgName: string) {
       lastTag = tag;
     }
   }
+  dog('比对', pkgName, '完成');
+  dog('耗时', Date.now() - startTime);
   if (lastTag !== 'latest') {
     dog(pkgName, '最新版本为：', lastVersion, 'tag为：', lastTag);
     pkgInfo.tag = lastTag;
