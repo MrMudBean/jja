@@ -1,4 +1,5 @@
 import { isArray, isString } from 'a-type-of-js';
+import { hidePen } from 'color-pen';
 
 /**
  * 逢 3 加斜杠
@@ -10,7 +11,7 @@ export function everyThreePlusBackslash(strList: string[]) {
   return strList
     .map((str, index) =>
       index % 3 === 2 && index !== strList.length - 1
-        ? `${str} \\\n`
+        ? `${str} ${hidePen`\\`}\n`
         : str.concat(' '),
     )
     .join('');

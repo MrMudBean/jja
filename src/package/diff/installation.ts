@@ -1,6 +1,6 @@
 import { _p } from 'a-node-tools';
 import { everyThreePlusBackslash } from './everyThreePlusBackslash';
-import { pen } from 'color-pen';
+import { hidePen, pen } from 'color-pen';
 import { copyTextToClipboard } from '@qqi/copy-text';
 import { pen666 } from '../../pen';
 import { terminalRegExp } from '@color-pen/static';
@@ -22,7 +22,9 @@ export async function installation(options: {
   _p(colorPen.reversed(msg), false);
   _p(copy ? pen666.reversed`已复制到剪切板 📋` : '');
   _p();
-  _p(`${colorPen`npm install --save`} \\\n${everyThreePlusBackslash(list)}`);
+  _p(
+    `${colorPen`npm install --save`} ${hidePen`\\`}\n${everyThreePlusBackslash(list)}`,
+  );
   _p();
   if (copy) {
     await copyTextToClipboard(
