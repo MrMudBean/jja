@@ -15,6 +15,7 @@ npm install --save-dev  jja
 - [remove ：与删除文件相关](#remove)
 - [package：与 package.json 包相关](#package)
 - `cls`、`clear`：清理终端屏幕，两个作用相同
+- - `dns`: 域名解析及连通性判断
 
 ### `remove`
 

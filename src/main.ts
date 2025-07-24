@@ -8,6 +8,7 @@ import { git } from './git';
 import { isUndefined } from 'a-type-of-js';
 import { dns } from './dns';
 import { colorLine } from 'a-node-tools';
+import { runCode } from './run';
 
 const arg = command.args.$arrMap;
 
@@ -55,6 +56,9 @@ async function run() {
   } else if ('runOtherCode' in currentSubcommand) {
     dog('执行运行其他命令');
     // await runOther(currentSubcommand.runOtherCode!);
+  } else if ('run' in currentSubcommand) {
+    dog('执行执行');
+    await runCode();
   }
 
   try {

@@ -1,8 +1,7 @@
 name: 发布到 npm
 on:
   push:
-    branches:
-      - '*'
+    branches: '*'
   workflow_dispatch: # 手动触发
     inputs:
       version:
@@ -10,7 +9,7 @@ on:
         required: false
         default: '手动触发'
       ref:
-        description: '触发的分支'
+        description: '触发的分支（选填，默认为当前分支）'
         required: false
         default: ''
 
@@ -26,9 +25,10 @@ jobs:
       contents: write
       id-token: write
     # 复合条件判断（自动触发检查提交信息，手动触发直接放行）
-    # contains: 检测第一个参数是否包含某字符串
-    # startsWith: 检测第一参数是否以某字符串开头
-    # endsWith： 检测第一个参数是否以某字符串结束
+    # contains : 检查字符串是否包含指定字符串
+    # startsWith : 检查字符串是否以指定字符串开头
+    # endsWith : 检查字符串是否以指定字符串结尾
+
     if: |
       (github.event_name == 'push' && startsWith(github.event.head_commit.message, 'version')) ||
       github.event_name == 'workflow_dispatch'
@@ -36,7 +36,7 @@ jobs:
       - name: 代码检出
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.ref || github.ref_name}}
+          ref: ${{ github.event.inputs.ref || github.ref_name }}
           fetch-depth: 1
 
       - name: 初始化 Node 并设定 Node 版本
@@ -44,6 +44,25 @@ jobs:
         with:
           node-version: 22.x
           registry-url: https://registry.npmjs.org
+          # cache: 'pnpm' # 该行添加后触发了 github action 的发布错误
+
+      - name: pnpm 安装
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+          run_install: false
+
+      - name: 缓存 pnpm
+        id: pnpm-store
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-store.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: 发布到 npm
         env:
