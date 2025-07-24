@@ -37,7 +37,7 @@ export async function installation(options: {
   _p();
   if (copy) {
     await copyTextToClipboard(
-      `npm install --save ${list.join(' ')}`.replace(terminalRegExp(), ''),
+      `${installKind} ${list.join(' ')}`.replace(terminalRegExp(), ''),
     );
   }
 }
