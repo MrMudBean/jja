@@ -1,6 +1,6 @@
 import { Command } from 'a-command';
 import { hexPen, randomPen, redPen } from 'color-pen';
-import { ArgsArrMapItemList } from './types';
+import { ArgsArrMapItemList } from '../types';
 import { dog } from './dog';
 
 // 初始化一个命令

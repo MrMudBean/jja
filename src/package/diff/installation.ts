@@ -1,9 +1,9 @@
 import { _p } from 'a-node-tools';
 import { hidePen, pen } from 'color-pen';
 import { copyTextToClipboard } from '@qqi/copy-text';
-import { pen666 } from '../../pen';
+import { pen666 } from '../../aided/pen';
 import { terminalRegExp } from '@color-pen/static';
-import { detectPackageManager, everyThreePlusBackslash } from '../utils';
+import { everyThreePlusBackslash, installKind } from '../utils';
 
 /**
  *
@@ -18,15 +18,7 @@ export async function installation(options: {
 }) {
   const { msg, list, type, copy } = options;
   const colorPen = pen[type];
-  /**  包管理方式  */
-  const packageManager = detectPackageManager();
-  /**  不同包管理方式下的包安装办法  */
-  const installKind =
-    packageManager === 'npm'
-      ? 'npm install --save'
-      : packageManager === 'yarn'
-        ? 'yarn add'
-        : 'pnpm add';
+
   _p();
   _p(colorPen.reversed(msg), false);
   _p(copy ? pen666.reversed`已复制到剪切板 📋` : '');
@@ -36,7 +28,7 @@ export async function installation(options: {
   );
   _p();
   if (copy) {
-    await copyTextToClipboard(
+    copyTextToClipboard(
       `${installKind} ${list.join(' ')}`.replace(terminalRegExp(), ''),
     );
   }

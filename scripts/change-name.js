@@ -1,5 +1,9 @@
-import { pathJoin, readFileToJsonSync } from 'a-node-tools';
-import { writeFileSync } from 'node:fs';
+import {
+  pathJoin,
+  readFileToJsonSync,
+  writeJsonFile,
+  getDirectoryBy,
+} from 'a-node-tools';
 
 const packageJson = readFileToJsonSync('./dist/package.json');
 
@@ -9,12 +13,12 @@ const on = packageJson.name;
 const nn = 'ixxx';
 packageJson.name = nn;
 packageJson.bin = Object.fromEntries([[nn, packageJson.bin[on]]]);
-delete packageJson.scripts;
-delete packageJson.devDependencies;
-delete packageJson['lint-staged'];
-delete packageJson.private;
 
-// eslint-disable-next-line no-undef
-const distPath = pathJoin(process.cwd(), './dist/package.json');
+// 写入 dist/package.json
+{
+  const distPath = getDirectoryBy('dist', 'directory');
 
-writeFileSync(distPath, JSON.stringify(packageJson, null, 2));
+  const distPackagePath = pathJoin(distPath, './dist/package.json');
+
+  writeJsonFile(distPackagePath, packageJson);
+}

@@ -1,4 +1,4 @@
-import { dog } from './../dog';
+import { dog } from '../aided/dog';
 import { removeData } from './removeData';
 import { _p, fileExist } from 'a-node-tools';
 import { wheelRun } from './wheelRun';

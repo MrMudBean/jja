@@ -1,4 +1,4 @@
-import { dog } from './../../dog';
+import { dog } from '../../aided/dog';
 import {
   getDirectoryBy,
   getNpmPkgInfo,
@@ -18,7 +18,7 @@ import { diffData } from './data-store';
  * 为了兼容 ts ，不更改返回值的类型
  *
  */
-export async function getVersion(): Promise<void> {
+export async function getExecuteCatalogPackageVersion(): Promise<void> {
   /// 当前工作目录
   const currentWordDirectory = getDirectoryBy('package.json', 'file');
 
@@ -43,7 +43,7 @@ export async function getVersion(): Promise<void> {
   /**  包名  */
   const name = packageInfo.name || '';
 
-  const inlineInfo = await getNpmPkgInfo(name, diffData.registry);
+  const inlineInfo = await getNpmPkgInfo(name, diffData.registry, 9800);
 
   diffData.local = packageInfo;
 

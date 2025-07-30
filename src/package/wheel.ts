@@ -1,4 +1,4 @@
-import { command } from '../command';
+import { command } from '../aided/command';
 import { diffPackage } from './diff';
 import { updateDependence } from './updateDependence';
 

@@ -1,6 +1,6 @@
-import { pen666 } from '../../pen';
+import { pen666 } from '../../aided/pen';
 import { _p } from 'a-node-tools';
-import { diffVersion } from './diffVersion';
+import { diffVersion } from './diff-version';
 import {
   boldPen,
   cyanPen,
@@ -15,8 +15,8 @@ import { isNull } from 'a-type-of-js';
 import { installation } from './installation';
 import { latestPen } from './latestPen';
 import { tagPen } from './tagPen';
-import { printInOneLine } from '../../printInOneLine';
 import { Table } from 'colored-table';
+import { installKind, printInOneLine } from '../utils';
 
 /**
  *
@@ -41,7 +41,6 @@ export async function dependencies() {
   diffData.binning(devDependencies, true);
 
   await diffVersion(); // 分析版本差
-
   // 没有依赖版本有差异且都正常获取没有出现网络故障
   if (
     preReleaseDependence.length === 0 &&
@@ -84,7 +83,8 @@ export async function dependencies() {
       `\n目前仅关注版本号是否为最新 ${pen.brightMagenta('latest')}`,
     ),
   );
-  _p('使用 npm install --save 命令安装更新\n');
+
+  _p(`使用 ${installKind} 命令安装更新\n`);
 
   if (timeoutDependence.length > 0) {
     printInOneLine(redPen`有一些包没有返回结果，请注意：`);

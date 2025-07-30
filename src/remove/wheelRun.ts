@@ -1,5 +1,5 @@
 import { greenPen } from 'color-pen';
-import { dog } from './../dog';
+import { dog } from '../aided/dog';
 import { _p } from 'a-node-tools';
 
 /** 轮回执行 */

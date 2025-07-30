@@ -1,5 +1,5 @@
 import { boldPen } from 'color-pen';
-import { boldGreenPen } from '../../pen';
+import { boldGreenPen } from '../../aided/pen';
 
 /**
  * 用来写彩色的  latest

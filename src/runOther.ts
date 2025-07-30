@@ -16,7 +16,7 @@ import {
   RunOtherCodeResult,
 } from 'a-node-tools';
 import { isUndefined, isZero } from 'a-type-of-js';
-import { command } from './command';
+import { command } from './aided/command';
 import { ArgsArrMapItemType } from 'a-command';
 
 /** 导出执行其他代码 */

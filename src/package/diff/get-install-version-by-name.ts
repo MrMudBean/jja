@@ -1,4 +1,4 @@
-import { dog } from './../../dog';
+import { dog } from '../../aided/dog';
 import { PackageJson, pathJoin, readFileToJsonSync } from 'a-node-tools';
 import { isNull } from 'a-type-of-js';
 import { diffData } from './data-store';
@@ -8,7 +8,7 @@ import { diffData } from './data-store';
  * 获取给定包的本地安装版本
  *
  */
-export function getInstallVersion(pkgName: string) {
+export function getInstallVersionByName(pkgName: string) {
   const result = readFileToJsonSync<PackageJson>(
     pathJoin('node_modules/', pkgName, 'package.json'),
   );

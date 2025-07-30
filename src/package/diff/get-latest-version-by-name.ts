@@ -1,4 +1,4 @@
-import { dog } from './../../dog';
+import { dog } from '../../aided/dog';
 import { getNpmPkgInfo } from 'a-node-tools';
 import { isNull } from 'a-type-of-js';
 import { diffData } from './data-store';
@@ -6,9 +6,9 @@ import { diffData } from './data-store';
 /**
  * 获取给定包的最新版本号（线上数据）
  */
-export async function getLatestVersion(pkgName: string) {
+export async function getLatestVersionByName(pkgName: string) {
   /**  获取线上信息  */
-  const response = await getNpmPkgInfo(pkgName, diffData.registry, 4567);
+  const response = await getNpmPkgInfo(pkgName, diffData.registry, 9867);
 
   if (response.status === 'timeout') {
     dog.warn('请求超时');

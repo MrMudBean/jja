@@ -1,10 +1,10 @@
-import { dog } from './../dog';
+import { dog } from '../aided/dog';
 import dns from 'node:dns';
 import { dataStore } from './data-store';
 import { isUndefined } from 'a-type-of-js';
 import { checkIp } from './checkIp';
 import { _p } from 'a-node-tools';
-import { orangePen, pen666 } from '../pen';
+import { orangePen, pen666 } from '../aided/pen';
 import { cyanPen } from 'color-pen';
 
 /**

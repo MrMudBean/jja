@@ -3,8 +3,8 @@ import { dataStore } from './data-store';
 import { isUndefined } from 'a-type-of-js';
 import { getIdByDnsServer } from './getIdByDnsServer';
 import { greenPen, pen, redPen, strInOneLineOnTerminal } from 'color-pen';
-import { dog } from '../dog';
-import { orangePen, pen666 } from '../pen';
+import { dog } from '../aided/dog';
+import { orangePen, pen666 } from '../aided/pen';
 
 /**
  *

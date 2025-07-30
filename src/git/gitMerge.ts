@@ -1,5 +1,5 @@
 import { runOtherCode } from 'a-node-tools';
-import { command } from '../command';
+import { command } from '../aided/command';
 import { isBusinessEmptyString, isUndefined } from 'a-type-of-js';
 
 /** 合并两个分支  */

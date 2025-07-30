@@ -7,7 +7,7 @@ import {
   isWindows,
   runOtherCode,
 } from 'a-node-tools';
-import { dog } from './dog';
+import { dog } from './aided/dog';
 
 /** 导出清理屏幕 */
 export async function clearScreen() {

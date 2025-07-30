@@ -1,4 +1,4 @@
-import { dog } from '../dog';
+import { dog } from '../aided/dog';
 import { Resolver } from 'node:dns';
 
 import { checkIp } from './checkIp';

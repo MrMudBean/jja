@@ -1,4 +1,4 @@
-import { command } from '../command';
+import { command } from '../aided/command';
 import { _p, getDirectoryBy, runOtherCode } from 'a-node-tools';
 import { hexPen } from 'color-pen';
 import { tagCommit } from './tagCommit';

@@ -1,6 +1,6 @@
 import { npmPkgInfoType, npmRegistry, PackageJson } from 'a-node-tools';
 import { isEmptyObject, isNull, isString, isUndefined } from 'a-type-of-js';
-import { command } from 'src/command';
+import { command } from '../../aided/command';
 
 /**
  *

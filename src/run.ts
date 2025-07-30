@@ -9,8 +9,8 @@ import {
 } from 'a-node-tools';
 import { isEmptyObject, isUndefined } from 'a-type-of-js';
 import { cyanPen, magentaPen } from 'color-pen';
-import { command } from './command';
-import { dog } from './dog';
+import { command } from './aided/command';
+import { dog } from './aided/dog';
 
 /**  执行 npm 命令  */
 export async function runCode() {

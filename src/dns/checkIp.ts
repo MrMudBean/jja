@@ -1,4 +1,4 @@
-import { dog } from './../dog';
+import { dog } from '../aided/dog';
 import net from 'node:net';
 import { dataStore } from './data-store';
 /**

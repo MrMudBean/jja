@@ -1,5 +1,5 @@
-import { dog } from './../dog';
-import { command } from '../command.js';
+import { dog } from '../aided/dog';
+import { command } from '../aided/command.js';
 import { isPlainObject, isUndefined } from 'a-type-of-js';
 import { wheel } from './wheel.js';
 import { gitParam } from 'src/types.js';

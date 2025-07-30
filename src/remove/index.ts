@@ -1,4 +1,4 @@
-import { dog } from './../dog';
+import { dog } from '../aided/dog';
 import { pen } from 'color-pen';
 import { _p, isWindows } from 'a-node-tools';
 import { removeParam } from '../types';

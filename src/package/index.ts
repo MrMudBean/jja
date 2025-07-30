@@ -1,5 +1,5 @@
-import { dog } from './../dog';
-import { command } from '../command';
+import { dog } from '../aided/dog';
+import { command } from '../aided/command';
 import { packageParam } from '../types';
 import { isUndefined } from 'a-type-of-js';
 import { wheel } from './wheel';

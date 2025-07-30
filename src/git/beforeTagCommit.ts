@@ -1,5 +1,5 @@
 import { isUndefined } from 'a-type-of-js';
-import { command } from '../command';
+import { command } from '../aided/command';
 import { tagCommit } from './tagCommit';
 
 /** 打 tag 之前 */

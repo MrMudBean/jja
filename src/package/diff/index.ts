@@ -1,11 +1,11 @@
-import { dog } from './../../dog';
-import { getVersion } from './getVersion';
+import { dog } from '../../aided/dog';
+import { getExecuteCatalogPackageVersion } from './get-execute-catalog-package-version';
 import { _p, colorLine, npmRegistry } from 'a-node-tools';
 import { isNull } from 'a-type-of-js';
 import { dependencies } from './dependencies';
 import { diffData } from './data-store';
-import { orangePen, pen399 } from '../../pen';
-import { command } from '../../command';
+import { orangePen, pen399 } from '../../aided/pen';
+import { command } from '../../aided/command';
 
 /** 检测当前包状态
  *
@@ -17,10 +17,10 @@ import { command } from '../../command';
 export async function diffPackage(
   param: (string | number | boolean)[],
 ): Promise<void> {
-  diffData.registry = param[0]?.toString() as npmRegistry;
+  diffData.registry = (param[0]?.toString() as npmRegistry) || undefined;
 
   /// 当前工作目录
-  await getVersion();
+  await getExecuteCatalogPackageVersion();
 
   const { local, online } = diffData;
 

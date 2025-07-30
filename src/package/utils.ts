@@ -2,10 +2,19 @@ import {
   cursorMoveUp as moveUp,
   _p,
   cursorAfterClear,
-  getDirectoryBy,
+  detectPackageManager,
 } from 'a-node-tools';
 import { isArray, isString } from 'a-type-of-js';
-import { hidePen } from 'color-pen';
+import { hidePen, strInOneLineOnTerminal } from 'color-pen';
+
+/**
+ *
+ * 将文本打印到同一行
+ *
+ */
+export function printInOneLine(str: string) {
+  _p(strInOneLineOnTerminal(str));
+}
 
 /** 光标上移并清理该行 */
 export function cursorMoveUp(message: string) {
@@ -29,25 +38,15 @@ export function everyThreePlusBackslash(strList: string[]) {
     )
     .join('');
 }
+/**  安装方式  */
+export const installKind = (() => {
+  /**  包管理方式  */
+  const packageManager = detectPackageManager();
+  /**  不同包管理方式下的包安装办法  */
 
-/**  检测当前的启动执行  */
-export function detectPackageManager(): 'npm' | 'pnpm' | 'yarn' {
-  const _ = (test: string) => Boolean(getDirectoryBy(test, 'file'));
-
-  /**  判断是否存在 pnpm 的锁文件  */
-  if (_('pnpm-lock.yaml')) return 'pnpm';
-  /**  判断是否有 yarn 的锁文件  */ else if (_('yarn.lock')) return 'yarn';
-  /**  判断是否有 npm 的锁文件  */ else if (_('package-lock.json'))
-    return 'npm';
-
-  const userAgent = process.env.npm_config_user_agent || '';
-  if (userAgent.includes('pnpm')) return 'pnpm';
-  if (userAgent.includes('yarn')) return 'yarn';
-  if (userAgent.includes('npm')) return 'npm';
-
-  // 2. 检测环境变量
-  if (process.env.PNPM_HOME) return 'pnpm';
-  if (process.env.YARN_IGNORE_PATH) return 'yarn';
-
-  return 'npm';
-}
+  return packageManager === 'npm'
+    ? 'npm install --save'
+    : packageManager === 'yarn'
+      ? 'yarn add'
+      : 'pnpm add';
+})();
