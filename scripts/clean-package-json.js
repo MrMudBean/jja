@@ -17,13 +17,13 @@ packageJson = {
     email: 'earthnut.dev@outlook.com',
     url: 'https://earthnut.dev',
   },
-  files: ['src', 'bin.mjs'],
+  files: ['bin.mjs'],
   keywords: ['jja'],
   repository: {
     type: 'git',
     url: 'git+https://github.com/earthnutDev/jja.git',
   },
-  homepage: 'https://earthnut.dev/jja',
+  homepage: 'https://earthnut.dev/npm/jja',
   bugs: {
     url: 'https://github.com/earthnutDev/jja/issues',
     email: 'earthnut.dev@outlook.com',

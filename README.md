@@ -76,4 +76,4 @@ npx jja dns -n
 
 ## 📄 文档地址
 
-参看 [https://earthnut.dev/jja/](https://earthnut.dev/jja/)
+参看 [https://earthnut.dev/npm/jja/](https://earthnut.dev/npm/jja/)
