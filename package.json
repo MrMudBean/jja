@@ -61,7 +61,7 @@
     "jest": "^30.0.5",
     "jest-environment-jsdom": "^30.0.5",
     "jest-junit": "^16.0.0",
-    "jja": "^2.3.16",
+    "jja": "^2.3.17",
     "lint-staged": "^16.1.2",
     "pjj": "^1.0.4",
     "prettier": "^3.6.2",

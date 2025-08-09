@@ -103,8 +103,8 @@ importers:
         specifier: ^16.0.0
         version: 16.0.0
       jja:
-        specifier: ^2.3.16
-        version: 2.3.16
+        specifier: ^2.3.17
+        version: 2.3.17
       lint-staged:
         specifier: ^16.1.2
         version: 16.1.2
@@ -1907,8 +1907,8 @@ packages:
       node-notifier:
         optional: true
 
-  jja@2.3.16:
-    resolution: {integrity: sha512-2t5KZodGvTmGmHf9DrNDPclGhyJ+mfaRbKUrcs3Yw+n3/YzSqmoyU75fSSpNZCnlwReLn+2S8FNdPVAzDUT+3g==}
+  jja@2.3.17:
+    resolution: {integrity: sha512-4Q9TqXDsoxo4rPzEQOhJtQ6m6RzX3955ADCn18Bi5dC9UEi/iODfH/s357kNv5ecgp/tJrGU52WbokosNa2OnA==}
     hasBin: true
 
   js-cleanup@1.2.0:
@@ -4877,7 +4877,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  jja@2.3.16:
+  jja@2.3.17:
     dependencies:
       '@color-pen/static': 1.0.1
       '@qqi/copy-text': 1.0.6
