@@ -32,14 +32,12 @@ command
     'dns  (使用 dns 获取 ip 地址)': [
       '--domain <-d> (获取给定域名获取 ip 地址，默认 github.com )',
       '--port <-p> (配置要校验的 port 端口号，默认为 443)',
-      '--not-covered <-n> (不覆盖解析过程，默认不展示)',
       // 未来版本功能预留
       // '--rrtype <-r> (配置要校验的 rrtype 类型，默认（传入非法值时）为 A)',
     ],
     // 'run 执行': [],
     // 执行不可预估
-    // 'runOtherCode <run> (执行其他的代码，使用 npm run 的可省略, 若想执行多个命令，请多次使用 run )':
-    // [],
+    'runOtherCode <run> (执行其他的代码,使用 )': [],
   })
   .run();
 

@@ -9,6 +9,7 @@ import { isEmptyArray, isUndefined } from 'a-type-of-js';
 import { dns } from './dns';
 import { colorLine } from 'a-node-tools';
 import { randomPen } from 'color-pen';
+import { runOther } from './ron-other';
 
 const arg = command.args.$arrMap;
 
@@ -57,7 +58,7 @@ async function run() {
     await dns(currentSubcommand.dns!);
   } else if (currentSubcommand.runOtherCode) {
     dog('执行运行其他命令');
-    // await runOther(currentSubcommand.runOtherCode!);
+    await runOther(currentSubcommand.runOtherCode!);
   }
 
   try {

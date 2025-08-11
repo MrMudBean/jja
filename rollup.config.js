@@ -19,8 +19,13 @@ export default {
   },
   // 配置需要排除的包
   external: external({
-    include: ['src/aided/command', 'src/aided/waiting'],
-    ignore: ['node:dns', 'node:net', 'node:https'],
+    include: [
+      'src/aided/command',
+      'src/aided/waiting',
+      'src/aided/dog',
+      'src/aided/pen',
+    ],
+    ignore: ['node:dns', 'node:net', 'node:https', 'node:child_process'],
   }),
   plugins: [
     resolve(),

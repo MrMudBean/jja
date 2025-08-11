@@ -42,12 +42,18 @@ export type DataStore = {
   dnsServers: string[];
   /**  测试的接口  */
   port: number;
-  /**  不覆盖结果  */
-  notCovered: boolean;
   /**  资源记录类型  */
   rrtype: rrtype[];
+  /**  本地设置的 ip 可不展示 copy  */
+  noCopy: boolean;
   /**  测试后的 ip 列表  */
   ips: {
     [x: string]: boolean;
   };
+};
+
+/**  活动的地址信息  */
+export type ActiveAddress = {
+  ip: string;
+  isAlive: boolean;
 };

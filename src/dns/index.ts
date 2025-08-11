@@ -5,6 +5,7 @@ import { getIp } from './getIp';
 import { getLocalIp } from './getLocalIp';
 import { printNotFound } from './printNotFound';
 import { ArgsArrMapItemType } from 'a-command';
+import { waiting } from 'src/aided/waiting';
 
 /**
  *
@@ -15,9 +16,9 @@ export async function dns(params: ArgsArrMapItemType<dnsParam>) {
   dataStore.reset(params.options);
   await getLocalIp();
   await getIp();
+  waiting.destroyed();
 
   const { ips } = dataStore;
-
   if (Object.keys(ips).length > 0) {
     await printResult();
   } else {

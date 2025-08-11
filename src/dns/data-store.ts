@@ -24,12 +24,12 @@ export const rrtypeList: rrtype[] = [
 export const dataStore: DataStore = {
   domain: 'github.com',
   port: 443,
-  notCovered: false,
   dnsServers: [
     '1.1.1.1',
     '8.8.8.8',
     '8.8.4.4',
-    '9.9.9.9',
+    //  Quad9 DNS 不稳定，暂时不使用
+    // '9.9.9.9',
     '208.67.222.222',
     '114.114.115.115',
     '223.5.5.5',
@@ -41,7 +41,6 @@ export const dataStore: DataStore = {
     this.ips = {};
     this.domain = 'github.com';
     this.port = 443;
-    this.notCovered = false;
     this.rrtype = [];
     if (isUndefined(param)) {
       return;
@@ -59,11 +58,6 @@ export const dataStore: DataStore = {
         this.port = Number(port[0]);
       }
 
-      const notCovered = item['--not-covered'];
-      if (!isUndefined(notCovered) && notCovered[0] !== false) {
-        this.notCovered = true;
-      }
-
       const rrtype = item['--rrtype'];
       if (!isUndefined(rrtype) && rrtype.length > 0) {
         const inputRrtypeList = intersection<rrtype>(
@@ -71,10 +65,9 @@ export const dataStore: DataStore = {
           rrtype as rrtype[],
         );
         /// 两者有共同的交集
-        if (inputRrtypeList.length > 0) {
-          this.rrtype = inputRrtypeList;
-        }
+        if (inputRrtypeList.length > 0) this.rrtype = inputRrtypeList;
       }
     });
   },
+  noCopy: true,
 };

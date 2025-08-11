@@ -1,10 +1,8 @@
-import { _p, cursorAfterClear, cursorMoveUp } from 'a-node-tools';
+import { cursorAfterClear, cursorMoveUp } from 'a-node-tools';
 import { dataStore } from './data-store';
-import { isUndefined } from 'a-type-of-js';
 import { getIdByDnsServer } from './getIdByDnsServer';
-import { greenPen, pen, redPen, strInOneLineOnTerminal } from 'color-pen';
-import { dog } from '../aided/dog';
-import { orangePen, pen666 } from '../aided/pen';
+import { dun } from '../aided/dog';
+import { waiting } from 'src/aided/waiting';
 
 /**
  *
@@ -12,36 +10,21 @@ import { orangePen, pen666 } from '../aided/pen';
  *
  */
 export async function getIp() {
-  const { domain, dnsServers, notCovered } = dataStore;
-  let clear = 0;
+  const { domain, dnsServers } = dataStore;
+  waiting.log(`${domain} ip 列表：`);
 
-  _p(`${domain} ip 列表：`);
+  const promiseList = dnsServers.map(server => getIdByDnsServer(server));
 
-  for (const server of dnsServers) {
-    const { dnsServer, results } = await getIdByDnsServer(server);
-    if (isUndefined(results)) {
-      dog.warn(`${dnsServer} 获取 ip 失败`);
-      continue;
-    }
-    if (!notCovered && clear !== 0) {
-      cursorMoveUp(clear);
-      cursorAfterClear(true);
-    }
+  const results = await Promise.all(promiseList);
 
-    _p();
-    _p(pen.reversed`DNS: ${dnsServer}`);
-    _p();
-    results.forEach(({ ip, isAlive }) => {
-      const message = isAlive
-        ? `${greenPen(ip)} ${orangePen`->`}  ✅`
-        : `${pen666(ip)} ${redPen`⛓️‍💥`}  ❌`;
-      _p(strInOneLineOnTerminal(message));
-    });
-    clear = 3 + results.length;
-  }
-
-  if (!notCovered) {
-    cursorMoveUp(clear + 1);
+  // 正式环境且
+  if (dun) {
+    cursorMoveUp(
+      results.reduce(
+        (previousValue, currentValue) => previousValue + currentValue,
+        0,
+      ) + 1,
+    );
     cursorAfterClear(true);
   }
 }
