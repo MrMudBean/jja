@@ -3,9 +3,14 @@ import {
   _p,
   cursorAfterClear,
   detectPackageManager,
+  isWindows,
+  detectShell,
 } from 'a-node-tools';
 import { isArray, isString } from 'a-type-of-js';
 import { hidePen, strInOneLineOnTerminal } from 'color-pen';
+
+/**  尾缀  */
+export const suffix = isWindows ? (detectShell() === 'cmd' ? '^' : '`') : '\\';
 
 /**
  *
@@ -30,10 +35,11 @@ export function everyThreePlusBackslash(strList: string[]) {
   if (!isArray(strList) || strList.some(i => !isString(i))) {
     throw new TypeError('参数必须为字符串数组');
   }
+
   return strList
     .map((str, index) =>
       index % 3 === 2 && index !== strList.length - 1
-        ? `${str} ${hidePen`\\`}\n`
+        ? `${str} ${hidePen(suffix)}\n`
         : str.concat(' '),
     )
     .join('');

@@ -8,7 +8,7 @@ import copy from 'rollup-plugin-copy';
 import { external } from '@qqi/rollup-external';
 
 export default {
-  input: './bin.ts',
+  input: 'bin.ts',
   output: {
     format: 'es',
     entryFileNames: '[name].mjs',

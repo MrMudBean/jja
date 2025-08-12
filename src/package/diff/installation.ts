@@ -3,7 +3,7 @@ import { hidePen, pen } from 'color-pen';
 import { copyTextToClipboard } from '@qqi/copy-text';
 import { pen666 } from '../../aided/pen';
 import { terminalRegExp } from '@color-pen/static';
-import { everyThreePlusBackslash, installKind } from '../utils';
+import { everyThreePlusBackslash, installKind, suffix } from '../utils';
 
 /**
  *
@@ -24,7 +24,7 @@ export async function installation(options: {
   _p(copy ? pen666.reversed`已复制到剪切板 📋` : '');
   _p();
   _p(
-    `${colorPen(installKind)} ${hidePen`\\`}\n${everyThreePlusBackslash(list)}`,
+    `${colorPen(installKind)} ${hidePen(suffix)}\n${everyThreePlusBackslash(list)}`,
   );
   _p();
   if (copy) {
