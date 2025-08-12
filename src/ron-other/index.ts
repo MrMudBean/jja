@@ -24,10 +24,12 @@ export async function runOther(runOther: ArgsArrMapItemType<undefined>) {
     const currentItem = value[i].toString();
     // 当前为设置的环境变量
     if (currentItem.includes('=')) {
-      const [envKey, envValue] = currentItem.split('=');
+      const [envKey, ...envValue] = currentItem.split('=');
       if (envKey && envValue) {
-        process.env[envKey] = envValue;
-        command.SUCCESS(`设置环境变量 ${envKey}=${envValue} ✅`);
+        const envValueStr =
+          envValue.length > 1 ? `'${envValue.join('=')}'` : envValue[0];
+        process.env[envKey] = envValueStr;
+        command.SUCCESS(`设置环境变量 ${envKey}=${envValueStr} ✅`);
         value[i] = ''; // 设置为空
       } else {
         command.ERROR(`环境变量格式错误: ${currentItem}`);

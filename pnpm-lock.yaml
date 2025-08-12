@@ -85,8 +85,8 @@ importers:
         specifier: ^9.1.7
         version: 9.1.7
       jja:
-        specifier: ^2.3.17
-        version: 2.3.17
+        specifier: ^2.3.18
+        version: 2.3.18
       lint-staged:
         specifier: ^16.1.5
         version: 16.1.5
@@ -875,8 +875,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  jja@2.3.17:
-    resolution: {integrity: sha512-4Q9TqXDsoxo4rPzEQOhJtQ6m6RzX3955ADCn18Bi5dC9UEi/iODfH/s357kNv5ecgp/tJrGU52WbokosNa2OnA==}
+  jja@2.3.18:
+    resolution: {integrity: sha512-LDuEOimyFMMV2yZnGhLlI7mHYpqy9g5ir9yH8DvU0F4DddPLA9H0t2UansostpudwPspbWkSdMfni+yYdSun+A==}
     hasBin: true
 
   js-cleanup@1.2.0:
@@ -2025,7 +2025,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  jja@2.3.17:
+  jja@2.3.18:
     dependencies:
       '@color-pen/static': 1.0.1
       '@qqi/copy-text': 1.0.7

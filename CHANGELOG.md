@@ -1,5 +1,9 @@
 # jolly job aid
 
+## v2.3.19 (2025-8-13)
+
+- 修复一个已知问题，该问题将导致使用 `run` 时遇见 `jja cls && jja run PORT=9463 NODE_OPTIONS='--max-old-space-size=768' docusaurus start` 这种命令解析出错
+
 ## v2.3.18 (2025-8-12)
 
 - 修复已知问题,该问题造成在 windows 上终端中使用 `jja pkg -d` 时返回了 `\` 结尾.

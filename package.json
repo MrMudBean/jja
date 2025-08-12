@@ -1,7 +1,7 @@
 {
   "name": "jja",
   "type": "module",
-  "version": "2.3.18",
+  "version": "2.3.19",
   "private": true,
   "description": "一些在终端的执行动作 🥜",
   "scripts": {
@@ -55,7 +55,7 @@
     "globals": "^16.3.0",
     "gvv": "^0.1.7",
     "husky": "^9.1.7",
-    "jja": "^2.3.17",
+    "jja": "^2.3.18",
     "lint-staged": "^16.1.5",
     "pjj": "^1.0.4",
     "prettier": "^3.6.2",
