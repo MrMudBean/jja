@@ -1,5 +1,9 @@
 # jolly job aid
 
+## v2.3.20 (2025-8-16)
+
+- 修改已知问题，该问题导致使用 `run` 时识别玩第一个参数项后直接退出了环境参数的设置
+
 ## v2.3.19 (2025-8-13)
 
 - 修复一个已知问题，该问题将导致使用 `run` 时遇见 `jja cls && jja run PORT=9463 NODE_OPTIONS='--max-old-space-size=768' docusaurus start` 这种命令解析出错

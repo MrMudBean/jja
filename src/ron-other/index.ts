@@ -22,21 +22,25 @@ export async function runOther(runOther: ArgsArrMapItemType<undefined>) {
   for (const i in value) {
     /**  当前的命令  */
     const currentItem = value[i].toString();
-    // 当前为设置的环境变量
-    if (currentItem.includes('=')) {
-      const [envKey, ...envValue] = currentItem.split('=');
-      if (envKey && envValue) {
-        const envValueStr =
-          envValue.length > 1 ? `'${envValue.join('=')}'` : envValue[0];
-        process.env[envKey] = envValueStr;
-        command.SUCCESS(`设置环境变量 ${envKey}=${envValueStr} ✅`);
-        value[i] = ''; // 设置为空
-      } else {
-        command.ERROR(`环境变量格式错误: ${currentItem}`);
-        command.error();
-      }
+    /**  等号的下标  */
+    const equalSignIndex = currentItem.indexOf('=');
+    // 当没有查询到等号
+    if (equalSignIndex === -1) break;
+    // 等号在开头
+    if (equalSignIndex === 0) {
+      command.ERROR(`未识别 "${currentItem}" 且已移除该项 ❌`);
+      value[i] = ''; // 设置为空
+      continue;
     }
-    break; // 仅允许前置环境变量的设置
+    // 构建环境值
+    const [_key, _value] = [
+      currentItem.slice(0, equalSignIndex),
+      currentItem.slice(equalSignIndex + 1) || 'true',
+    ];
+
+    process.env[_key] = _value;
+    command.SUCCESS(`设置环境变量 ${_key}=${_value} ✅`);
+    value[i] = ''; // 设置为空
   }
 
   /**  执行代码  */
