@@ -74,6 +74,39 @@ npx jja dns --not-covered
 npx jja dns -n
 ```
 
+### 执行其他代码
+
+使用 `run` 达到 `&&` 的执行串联的效果。当然，不仅仅只为了替代两个字符的 `&&` 而选用三个字符的 `run` 来多此一举。因为在 Windows 上无法像使用 `shell` 使用 `XXX=xxx` 一样简单的使用环境变量。所以使用 `jja run` 来简化这一过程。
+
+```json
+{
+  "scripts": {
+    "dev": "jja cls run PORT=9463 docusaurus start"
+  }
+}
+```
+
+当然，在 Windows 上有自己的设置运行环境变量的方式:
+
+```json
+{
+  "scripts": {
+    "dev:cmd": "jja cls && set PORT=9463 && docusaurus start",
+    "dev:powerShell": "jja cls && $env:PORT=9463; docusaurus start"
+  }
+}
+```
+
+而在 unix 系统上可以使用常用的：
+
+```json
+{
+  "scripts": {
+    "dev:unix": "jja cls && PORT=9463 docusaurus start"
+  }
+}
+```
+
 ## 📄 文档地址
 
 参看 [https://earthnut.dev/npm/jja/](https://earthnut.dev/npm/jja/)

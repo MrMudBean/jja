@@ -69,7 +69,7 @@ export async function diffVersion(): Promise<void> {
           // 该包现安装的本就是最新的预发布版本
           if (pkgLocalInstallVersion === pkgInfo.latestVersion) {
             waiting.log(
-              `${enPrefixList.info()} {key} 的本地版本${pkgLocalVersion} 安装版本为 ${pkgLocalInstallVersion}`,
+              `${enPrefixList.info()} ${key} 的本地版本${pkgLocalVersion} 安装版本为 ${pkgLocalInstallVersion}`,
             );
             return resolve(true);
           }

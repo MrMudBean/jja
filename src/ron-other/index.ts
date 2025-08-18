@@ -46,6 +46,8 @@ export async function runOther(runOther: ArgsArrMapItemType<undefined>) {
   /**  执行代码  */
   const code = value.join(' ').trim();
   dog('执行代码', code);
+
+  /**  启动服务  */
   const child = spawn(code, [], {
     stdio: 'inherit', // 继承父进程的输入输出
     env: process.env, // 设置后的环境变量

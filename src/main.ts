@@ -13,6 +13,10 @@ import { runOther } from './ron-other';
 
 const arg = command.args.$arrMap;
 
+dog(arg);
+
+dog(command.args.$original);
+
 // 没有匹配到具体的子命令时可返回
 
 if (command.args.$isVoid) {
