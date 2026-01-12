@@ -7,7 +7,10 @@ import {
 } from 'a-node-tools';
 import { isNull } from 'a-type-of-js';
 
-/** 给提交打上 tag  */
+/**
+ * 给提交打上 tag
+ * @param commitMessage 提交信息
+ */
 export async function tagCommit(commitMessage: string) {
   const cwd = getDirectoryBy('package.json', 'file', process.cwd());
   if (cwd == undefined) return true;

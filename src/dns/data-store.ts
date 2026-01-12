@@ -1,8 +1,8 @@
+import { ArgsArrMapOptions } from 'a-command';
+import { intersection } from 'a-js-tools';
 import { isUndefined } from 'a-type-of-js';
 import { dnsParam } from 'src/types';
 import { DataStore, rrtype } from './types';
-import { intersection } from 'a-js-tools';
-import { ArgsArrMapOptions } from 'a-command';
 
 /** 可用的记录值类型 */
 export const rrtypeList: rrtype[] = [

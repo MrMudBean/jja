@@ -7,6 +7,10 @@ import { gitMerge } from './gitMerge';
  *
  * 循环执行
  *
+ * @param params 执行参数
+ * @param params.commit 提交参数
+ * @param params.merge 合并参数
+ * @param params.tag git 标签
  */
 export async function wheel(params: {
   commit?: (string | number | boolean)[] | undefined;

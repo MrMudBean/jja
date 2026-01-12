@@ -1,4 +1,3 @@
-import { dog } from '../../aided/dog';
 import {
   getDirectoryBy,
   getNpmPkgInfo,
@@ -7,6 +6,7 @@ import {
   readFileToJsonSync,
 } from 'a-node-tools';
 import { isNull, isUndefined } from 'a-type-of-js';
+import { dog } from '../../aided/dog';
 import { diffData } from './data-store';
 
 /**

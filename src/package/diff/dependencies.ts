@@ -1,28 +1,29 @@
-import { pen666 } from '../../aided/pen';
+import { terminalRegExp } from '@color-pen/static';
+import { copyTextToClipboard } from '@qqi/copy-text';
 import { _p } from 'a-node-tools';
-import { diffVersion } from './diff-version';
+import { isNull } from 'a-type-of-js';
 import {
   boldPen,
   cyanPen,
   greenPen,
+  hidePen,
   italicPen,
   pen,
   randomPen,
   redPen,
 } from 'color-pen';
-import { diffData } from './data-store';
-import { isNull } from 'a-type-of-js';
-import { installation } from './installation';
-import { latestPen } from './latestPen';
-import { tagPen } from './tagPen';
 import { Table } from 'colored-table';
-import { installKind, printInOneLine } from '../utils';
+import { boldGreenPen, pen666 } from '../../aided/pen';
+import {
+  everyThreePlusBackslash,
+  installKind,
+  printInOneLine,
+  suffix,
+} from '../utils';
+import { diffData } from './data-store';
+import { diffVersion } from './diff-version';
 
-/**
- *
- * 查看依赖版本信息的数据
- *
- */
+/** 查看依赖版本信息的数据 */
 export async function dependencies() {
   const {
     local,
@@ -144,5 +145,53 @@ export async function dependencies() {
       type: 'brightGreen',
       copy: true,
     });
+  }
+}
+
+/**
+ * 除了 latest 其他标签的色值为任意色
+ * @param pkgName 包名
+ * @param tag 标签
+ */
+function tagPen(pkgName: string, tag: string) {
+  return `${italicPen(pkgName)}@${italicPen.random(tag)}`;
+}
+/**
+ * 用来写彩色的  latest
+ * @param pkgName 包名
+ */
+function latestPen(pkgName: string) {
+  return `${boldPen(pkgName)}@${boldGreenPen`latest`}`;
+}
+
+/**
+ * 安装方式
+ * @param options 使用参数
+ * @param options.msg 安装信息
+ * @param options.list 安装列表
+ * @param options.type 安装类型
+ * @param options.copy 是否执行复制安装信息到剪切板
+ */
+async function installation(options: {
+  msg: string;
+  list: string[];
+  type: 'brightGreen' | 'brightMagenta' | 'brightRed';
+  copy?: boolean;
+}) {
+  const { msg, list, type, copy } = options;
+  const colorPen = pen[type];
+
+  _p();
+  _p(colorPen.reversed(msg), false);
+  _p(copy ? pen666.reversed`已复制到剪切板 📋` : '');
+  _p();
+  _p(
+    `${colorPen(installKind)} ${hidePen(suffix)}\n${everyThreePlusBackslash(list)}`,
+  );
+  _p();
+  if (copy) {
+    copyTextToClipboard(
+      `${installKind} ${list.join(' ')}`.replace(terminalRegExp(), ''),
+    );
   }
 }

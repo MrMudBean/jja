@@ -1,6 +1,6 @@
-import { command } from '../aided/command';
 import { _p, getDirectoryBy, runOtherCode } from 'a-node-tools';
 import { hexPen } from 'color-pen';
+import { command } from '../aided/command';
 import { tagCommit } from './tagCommit';
 
 /** 整理 git

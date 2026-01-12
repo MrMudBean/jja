@@ -1,15 +1,15 @@
-import { dog } from './aided/dog';
-import { command } from './aided/command';
-import { remove } from './remove';
-import { update } from './update';
-import { packageManage } from './package';
-import { clearScreen } from './clearScreen';
-import { git } from './git';
-import { isEmptyArray, isUndefined } from 'a-type-of-js';
-import { dns } from './dns';
 import { colorLine } from 'a-node-tools';
+import { isEmptyArray, isUndefined } from 'a-type-of-js';
 import { randomPen } from 'color-pen';
+import { command } from './aided/command';
+import { dog } from './aided/dog';
+import { clearScreen } from './clearScreen';
+import { dnsCommand } from './dns';
+import { git } from './git';
+import { packageManage } from './package';
+import { remove } from './remove';
 import { runOther } from './ron-other';
+import { update } from './update';
 
 const arg = command.args.$arrMap;
 
@@ -59,7 +59,7 @@ async function run() {
     await update(currentSubcommand.update!);
   } else if (currentSubcommand.dns) {
     dog('执行 dns 相关的命令');
-    await dns(currentSubcommand.dns!);
+    await dnsCommand(currentSubcommand.dns!);
   } else if (currentSubcommand.runOtherCode) {
     dog('执行运行其他命令');
     await runOther(currentSubcommand.runOtherCode!);

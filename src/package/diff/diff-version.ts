@@ -1,12 +1,12 @@
-import { pen399 } from '../../aided/pen';
-import { getInstallVersionByName } from './get-install-version-by-name';
-import { getLatestVersionByName } from './get-latest-version-by-name';
-import { diffData } from './data-store';
+import { prefixList } from 'a-command';
+import { _p, PackageJson, pathJoin, readFileToJsonSync } from 'a-node-tools';
+import { isNull, isUndefined } from 'a-type-of-js';
 import { cyanPen, greenPen } from 'color-pen';
 import { waiting } from 'src/aided/waiting';
-import { enPrefixList } from 'a-command';
-import { isUndefined } from 'a-type-of-js';
-import { _p } from 'a-node-tools';
+import { dog } from '../../aided/dog';
+import { pen399 } from '../../aided/pen';
+import { diffData } from './data-store';
+import { getLatestVersionByName } from './get-latest-version-by-name';
 import { testNpmRegistry } from './test-npm-registry';
 
 /**
@@ -35,10 +35,10 @@ export async function diffVersion(): Promise<void> {
           const pkgInfo = dependenceList[key];
           /**  package.json 中指定的版本  */
           const pkgLocalVersion = dependenceList[key].version;
-          waiting.run(`${enPrefixList.current()}获取 ${key} 的本地安装信息`);
+          waiting.run(`${prefixList.current()}获取 ${key} 的本地安装信息`);
           const pkgLocalInstallVersion = getInstallVersionByName(key);
           waiting.run(
-            `${enPrefixList.success()} ${key} 的本地安装版本：${pkgInfo.localVersion}`,
+            `${prefixList.success()} ${key} 的本地安装版本：${pkgInfo.localVersion}`,
           );
 
           /**  本地安装的版本  */
@@ -46,7 +46,7 @@ export async function diffVersion(): Promise<void> {
           if (pkgInfo.onlineVersion === '' && pkgInfo.latestVersion === '') {
             timeoutDependence.push(key); // 将超时的包加入超时包列表
             waiting.log(
-              `${enPrefixList.error()} ${key}  本地 ${pkgInfo.localVersion} 请求错误`,
+              `${prefixList.error()} ${key}  本地 ${pkgInfo.localVersion} 请求错误`,
             );
             return resolve(true);
           }
@@ -56,20 +56,20 @@ export async function diffVersion(): Promise<void> {
             const message = `${key} 的本地${pkgLocalVersion} 安装版本为 ${pkgLocalInstallVersion}  最新是 ${pkgInfo.onlineVersion} `;
             // 没有预发布版本
             if ('' === pkgInfo.latestVersion) {
-              waiting.run(enPrefixList.info() + message);
+              waiting.run(prefixList.info() + message);
 
               return resolve(true);
             }
             diffData.preReleaseDependence.push(key);
             waiting.log(
-              `${enPrefixList.info()} ${message}；最新预发布版本为 ${greenPen(pkgInfo.latestVersion)}`,
+              `${prefixList.info()} ${message}；最新预发布版本为 ${greenPen(pkgInfo.latestVersion)}`,
             );
             return resolve(true);
           }
           // 该包现安装的本就是最新的预发布版本
           if (pkgLocalInstallVersion === pkgInfo.latestVersion) {
             waiting.log(
-              `${enPrefixList.info()} ${key} 的本地版本${pkgLocalVersion} 安装版本为 ${pkgLocalInstallVersion}`,
+              `${prefixList.info()} ${key} 的本地版本${pkgLocalVersion} 安装版本为 ${pkgLocalInstallVersion}`,
             );
             return resolve(true);
           }
@@ -80,12 +80,12 @@ export async function diffVersion(): Promise<void> {
 
           // 没有最后发布的版本
           if ('' === pkgInfo.latestVersion) {
-            waiting.log(enPrefixList.info() + message);
+            waiting.log(prefixList.info() + message);
             return resolve(true);
           }
           diffData.preReleaseDependence.push(key);
           waiting.log(
-            `${enPrefixList.info()} ${message}；最新预发布版本为 ${greenPen(pkgInfo.latestVersion)}`,
+            `${prefixList.info()} ${message}；最新预发布版本为 ${greenPen(pkgInfo.latestVersion)}`,
           );
           return resolve(true);
         })();
@@ -95,4 +95,24 @@ export async function diffVersion(): Promise<void> {
   return Promise.all(promiseList).then(() => {
     waiting.destroyed();
   });
+}
+
+/**
+ * ## 获取给定包的本地安装版本
+ * @param pkgName 包名
+ */
+function getInstallVersionByName(pkgName: string) {
+  const result = readFileToJsonSync<PackageJson>(
+    pathJoin('node_modules/', pkgName, 'package.json'),
+  );
+  let version = '';
+  if (isNull(result)) {
+    version = '';
+  } else {
+    version = result.version || '';
+  }
+
+  diffData.dependenceList[pkgName].localVersion = version;
+  dog(pkgName, '本地安装的版本为：', version);
+  return version;
 }

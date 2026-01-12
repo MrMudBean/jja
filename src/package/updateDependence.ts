@@ -7,8 +7,8 @@ import {
   runOtherCode,
 } from 'a-node-tools';
 
-import { cursorMoveUp } from './utils';
 import { cyanPen, greenPen } from 'color-pen';
+import { cursorMoveUp } from './utils';
 
 /**
  *

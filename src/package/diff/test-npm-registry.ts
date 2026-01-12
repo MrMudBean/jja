@@ -1,6 +1,6 @@
+import https from 'node:https';
 import { npmRegistry } from 'a-node-tools';
 import { isFalse } from 'a-type-of-js';
-import https from 'node:https';
 import { waiting } from 'src/aided/waiting';
 /**  测试当前的 npm 的 registry 的  */
 export async function testNpmRegistry() {
@@ -40,7 +40,10 @@ export async function testNpmRegistry() {
   ) as npmRegistry;
 }
 
-/**  回调  */
+/**
+ *  回调
+ * @param e 嗯 😐
+ */
 function call(e: string): Promise<{
   url: string;
   time: number;

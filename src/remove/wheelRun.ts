@@ -1,8 +1,13 @@
+import { _p } from 'a-node-tools';
 import { greenPen } from 'color-pen';
 import { dog } from '../aided/dog';
-import { _p } from 'a-node-tools';
 
-/** 轮回执行 */
+/**
+ * 轮回执行
+ * @param callFn 执行回调
+ * @param params 命令参数
+ * @param count 执行次数
+ */
 export async function wheelRun<T>(
   callFn: (...param: unknown[]) => T,
   params: unknown[],

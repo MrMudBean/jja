@@ -1,12 +1,15 @@
-import { dog } from '../aided/dog';
-import { removeData } from './removeData';
 import { _p, fileExist } from 'a-node-tools';
-import { wheelRun } from './wheelRun';
-import { removeFileOrDirectory } from './removeFileOrDirectory';
 import { isUndefined } from 'a-type-of-js';
 import { hexPen, yellowPen } from 'color-pen';
+import { dog } from '../aided/dog';
+import { removeData } from './removeData';
+import { removeFileOrDirectory } from './removeFileOrDirectory';
+import { wheelRun } from './wheelRun';
 
-/** 移除文件前检测 */
+/**
+ * 移除文件前检测
+ * @param element 清理的项
+ */
 export async function beforeRemove(element: string) {
   if (!removeData.log) {
     _p(hexPen('#336')(`当前清理文件为 ${element}`));

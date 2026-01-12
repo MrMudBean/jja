@@ -1,8 +1,11 @@
 import { runOtherCode } from 'a-node-tools';
-import { command } from '../aided/command';
 import { isBusinessEmptyString, isUndefined } from 'a-type-of-js';
+import { command } from '../aided/command';
 
-/** 合并两个分支  */
+/**
+ * 合并两个分支
+ * @param params 分支名
+ */
 export async function gitMerge(params: string) {
   if (isBusinessEmptyString(params)) {
     const branchList = await runOtherCode('git branch -a');

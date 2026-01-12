@@ -1,10 +1,6 @@
-import { dun } from '../aided/dog';
-import { isEmptyArray, isNull } from 'a-type-of-js';
-import { dataStore } from './data-store';
-import { getAddressByResolve4 } from './get-address-by-resolve4';
-import { getIsAliveByAddress } from './get-is-alive-by-address';
-import { waiting } from 'src/aided/waiting';
+import { Resolver } from 'node:dns';
 import { _p } from 'a-node-tools';
+import { isEmptyArray, isNull } from 'a-type-of-js';
 import {
   greenPen,
   redPen,
@@ -12,11 +8,16 @@ import {
   strInOneLineOnTerminal,
 } from 'color-pen';
 import { orangePen, pen666 } from 'src/aided/pen';
+import { waiting } from 'src/aided/waiting';
+import { dun } from '../aided/dog';
+import { dataStore } from './data-store';
+import { getIsAliveByAddress } from './get-is-alive-by-address';
 
 /**
  * 通过配置的 dns 服务器获取给定的 domain 的 ip 值
  *
  * (仅在 get ip 中使用)
+ * @param dnsServer dns 服务器 IP
  */
 export async function getIdByDnsServer(dnsServer: string = '1.1.1.1') {
   const { domain } = dataStore;
@@ -50,4 +51,34 @@ export async function getIdByDnsServer(dnsServer: string = '1.1.1.1') {
     if (!dun) waiting.log(`'获取 ip 错误'`, error);
     return 0;
   }
+}
+
+/**
+ * ##通过 dns 的 resolve4 获取给定 domain 的反解析 ip
+ * @param domain 给定的域名
+ * @param dnsServer dns 服务器 ip
+ */
+export async function getAddressByResolve4(
+  domain: string,
+  dnsServer: string,
+): Promise<null | string[]> {
+  return new Promise(resolve => {
+    const resolver = new Resolver();
+
+    waiting.run(`使用 ${dnsServer} 获取 ${domain} 的 ip`);
+    resolver.setServers([dnsServer]);
+
+    resolver.resolve4(domain, (err, addresses) => {
+      if (err) {
+        if (!dun) waiting.run(`使用 ${dnsServer} 获取 ${domain} 的 ip 出错`);
+
+        return resolve(null);
+      }
+      if (!dun)
+        waiting.log(
+          `使用 ${dnsServer} 获取 ${domain} 的 ip 值为 ${addresses.join(' --- ')}`,
+        );
+      resolve(addresses);
+    });
+  });
 }

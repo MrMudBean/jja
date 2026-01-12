@@ -1,7 +1,20 @@
+/**
+ * @packageDocumentation
+ * @module  jja
+ * @file change-name.js
+ * @description 现在 ixxx 版本已不再随 jja 版本更新
+ * @author MrMudBean <Mr.MudBean@outlook.com>
+ * @license MIT
+ * @copyright  2026 ©️ MrMudBean
+ * @since 2026-01-12 09:44
+ * @version 2.4.0
+ * @lastModified 2026-01-12 09:45
+ */
+
 import {
   pathJoin,
   readFileToJsonSync,
-  writeJsonFile,
+  writeJsonFileSync,
   getDirectoryBy,
 } from 'a-node-tools';
 
@@ -20,5 +33,5 @@ packageJson.bin = Object.fromEntries([[nn, packageJson.bin[on]]]);
 
   const distPackagePath = pathJoin(distPath, './dist/package.json');
 
-  writeJsonFile(distPackagePath, packageJson);
+  writeJsonFileSync(distPackagePath, packageJson);
 }

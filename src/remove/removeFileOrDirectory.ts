@@ -1,10 +1,14 @@
 import { Stats } from 'node:fs';
-import { removeData } from './removeData';
 import { _p, isWindows, runOtherCode } from 'a-node-tools';
-import { removeResult } from './removeResult';
 import { hexPen } from 'color-pen';
+import { removeData } from './removeData';
+import { removeResult } from './removeResult';
 
-/** 移除文件或是目录 */
+/**
+ * 移除文件或是目录
+ * @param element 移除的项
+ * @param justForJudgment 仅做判定
+ */
 export async function removeFileOrDirectory(
   element: string,
   justForJudgment: Stats,

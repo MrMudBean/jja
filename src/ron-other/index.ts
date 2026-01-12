@@ -1,3 +1,15 @@
+/**
+ * @packageDocumentation
+ * @module  run-other
+ * @file index.ts
+ * @description 执行其他代码并注入环境变量
+ * @author MrMudBean <Mr.MudBean@outlook.com>
+ * @license MIT
+ * @copyright  2026 ©️ MrMudBean
+ * @since 2026-01-12 07:26
+ * @version 2.3.21
+ * @lastModified 2026-01-12 10:15
+ */
 /****************************************************************************
  *  @Author earthnut
  *  @Email earthnut.dev@outlook.com
@@ -7,14 +19,17 @@
  *  @Description 执行代码，使用 Unix 的模式创建环境变量
  *
  ****************************************************************************/
-import { isUndefined, isZero } from 'a-type-of-js';
-import { command } from '../aided/command';
-import { ArgsArrMapItemType } from 'a-command';
 import { spawn } from 'node:child_process';
+import { ArgsArrMapItem } from 'a-command';
+import { isUndefined, isZero } from 'a-type-of-js';
 import { dog } from 'src/aided/dog';
+import { command } from '../aided/command';
 
-/** 导出执行其他代码 */
-export async function runOther(runOther: ArgsArrMapItemType<undefined>) {
+/**
+ * 导出执行其他代码
+ * @param runOther 命令参数
+ */
+export async function runOther(runOther: ArgsArrMapItem<undefined>) {
   const { value } = runOther;
 
   if (isUndefined(value) || isZero(value.length)) return;

@@ -1,16 +1,17 @@
-import { dog } from '../aided/dog';
-import { command } from '../aided/command.js';
+import { ArgsArrMapItem } from 'a-command';
 import { isPlainObject, isUndefined } from 'a-type-of-js';
-import { wheel } from './wheel.js';
 import { gitParam } from 'src/types.js';
-import { ArgsArrMapItemType } from 'a-command';
+import { command } from '../aided/command.js';
+import { dog } from '../aided/dog';
+import { wheel } from './wheel.js';
 
 /**
  *
  * 与 git 相关的
  *
+ * @param params
  */
-export async function git(params: ArgsArrMapItemType<gitParam>) {
+export async function git(params: ArgsArrMapItem<gitParam>) {
   if (isPlainObject(params)) params = { value: [] };
 
   if (isUndefined(params.options) || params.options.length === 0) {

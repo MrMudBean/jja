@@ -1,10 +1,11 @@
-import { dog } from '../../aided/dog';
 import { getNpmPkgInfo } from 'a-node-tools';
 import { isNull } from 'a-type-of-js';
+import { dog } from '../../aided/dog';
 import { diffData } from './data-store';
 
 /**
  * 获取给定包的最新版本号（线上数据）
+ * @param pkgName 包名
  */
 export async function getLatestVersionByName(pkgName: string) {
   /**  获取线上信息  */

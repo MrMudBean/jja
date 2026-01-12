@@ -1,12 +1,15 @@
-import { dog } from '../aided/dog';
-import { command } from '../aided/command';
-import { packageParam } from '../types';
+import { ArgsArrMapItem } from 'a-command';
 import { isUndefined } from 'a-type-of-js';
+import { command } from '../aided/command';
+import { dog } from '../aided/dog';
+import { packageParam } from '../types';
 import { wheel } from './wheel';
-import { ArgsArrMapItemType } from 'a-command';
 
-/** 包管理的一些东西 */
-export async function packageManage(params: ArgsArrMapItemType<packageParam>) {
+/**
+ * 包管理的一些东西
+ * @param params 包使用参数
+ */
+export async function packageManage(params: ArgsArrMapItem<packageParam>) {
   if (isUndefined(params.options) || params.options.length == 0) {
     dog.warn('没有参数输入');
     return command.help('package');

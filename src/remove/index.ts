@@ -1,13 +1,16 @@
-import { dog } from '../aided/dog';
-import { pen } from 'color-pen';
+import { ArgsArrMapItem } from 'a-command';
 import { _p, isWindows } from 'a-node-tools';
+import { pen } from 'color-pen';
+import { dog } from '../aided/dog';
 import { removeParam } from '../types';
-import { removeData } from './removeData';
 import { beforeRemove } from './beforeRemove';
-import { ArgsArrMapItemType } from 'a-command';
+import { removeData } from './removeData';
 
-/** 移除文件或是目录 */
-export async function remove(params: ArgsArrMapItemType<removeParam>) {
+/**
+ * 移除文件或是目录
+ * @param params 命令参数
+ */
+export async function remove(params: ArgsArrMapItem<removeParam>) {
   /** 删除参数 */
   const delArr = params.value || [];
 

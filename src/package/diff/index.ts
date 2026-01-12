@@ -1,14 +1,15 @@
-import { dog } from '../../aided/dog';
-import { getExecuteCatalogPackageVersion } from './get-execute-catalog-package-version';
 import { _p, colorLine, npmRegistry } from 'a-node-tools';
 import { isNull } from 'a-type-of-js';
-import { dependencies } from './dependencies';
-import { diffData } from './data-store';
-import { orangePen, pen399 } from '../../aided/pen';
 import { command } from '../../aided/command';
+import { dog } from '../../aided/dog';
+import { orangePen, pen399 } from '../../aided/pen';
+import { diffData } from './data-store';
+import { dependencies } from './dependencies';
+import { getExecuteCatalogPackageVersion } from './get-execute-catalog-package-version';
 
 /** 检测当前包状态
  *
+ * @param param 使用（命令）参数
  * @returns 返回为一个 Promise ，可捕获值为一个数组
  * - 当数组为空，则证明当前未找到包 package.json
  * - 当数组仅有一个值，可能该包尚未上线
