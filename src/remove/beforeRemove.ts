@@ -1,6 +1,6 @@
-import { _p, fileExist } from 'a-node-tools';
-import { isUndefined } from 'a-type-of-js';
-import { hexPen, yellowPen } from 'color-pen';
+import { isUndefined } from '@vvi/is';
+import { _p, fileExist } from '@vvi/node';
+import { hexPen, yellowPen } from '@vvi/pen';
 import { dog } from '../aided/dog';
 import { removeData } from './removeData';
 import { removeFileOrDirectory } from './removeFileOrDirectory';

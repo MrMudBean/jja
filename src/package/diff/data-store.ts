@@ -1,6 +1,6 @@
-import { npmPkgInfoType, npmRegistry, PackageJson } from 'a-node-tools';
-import { isEmptyObject, isNull, isString, isUndefined } from 'a-type-of-js';
-import { command } from '../../aided/command';
+import { WARN } from '@vvi/command';
+import { isEmptyObject, isNull, isString, isUndefined } from '@vvi/is';
+import { npmPkgInfoType, npmRegistry, PackageJson } from '@vvi/node';
 
 /**
  *
@@ -65,7 +65,7 @@ export const diffData: {
     /// 循环遍历
     for (const key in list) {
       if (isString(overrides?.[key])) {
-        command.WARN(`${key} 被锁定在 ${overrides[key]}`);
+        WARN(`${key} 被锁定在 ${overrides[key]}`);
         continue;
       }
       const element = list[key];

@@ -1,5 +1,5 @@
-import { _p } from 'a-node-tools';
-import { greenPen } from 'color-pen';
+import { _p } from '@vvi/node';
+import { greenPen } from '@vvi/pen';
 import { dog } from '../aided/dog';
 
 /**

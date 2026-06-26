@@ -1,12 +1,12 @@
 import net from 'node:net';
-import { isBoolean } from 'a-type-of-js';
-import { dun } from 'src/aided/dog';
-import { waiting } from 'src/aided/waiting';
+import { isBoolean } from '@vvi/is';
+import { dun } from '../aided/dog';
+import { waiting } from '../aided/waiting';
 import { dataStore } from './data-store';
 import { ActiveAddress } from './types';
 
 /**
- *  通过地址数获取测试 ip 的连通性
+ * # 通过地址数获取测试 ip 的连通性
  * @param address 通信 ip
  */
 export async function getIsAliveByAddress(
@@ -16,8 +16,7 @@ export async function getIsAliveByAddress(
 }
 
 /**
- *
- * 校验 ip 的联通性
+ * # 校验 ip 的联通性
  *
  * @param ip
  * @param timeout

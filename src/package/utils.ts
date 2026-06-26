@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { dirname } from 'node:path';
+import { isArray, isString } from '@vvi/is';
 import {
   cursorMoveUp as moveUp,
   _p,
@@ -10,9 +11,8 @@ import {
   getPackageJsonSync,
   fileExist,
   pathJoin,
-} from 'a-node-tools';
-import { isArray, isString } from 'a-type-of-js';
-import { hidePen, strInOneLineOnTerminal } from 'color-pen';
+} from '@vvi/node';
+import { hidePen, strInOneLineOnTerminal } from '@vvi/pen';
 
 /**  尾缀  */
 export const suffix = isWindows ? (detectShell() === 'cmd' ? '^' : '`') : '\\';

@@ -1,15 +1,15 @@
 import { Resolver } from 'node:dns';
-import { _p } from 'a-node-tools';
-import { isEmptyArray, isNull } from 'a-type-of-js';
+import { isEmptyArray, isNull } from '@vvi/is';
+import { _p } from '@vvi/node';
 import {
   greenPen,
   redPen,
   reversedPen,
   strInOneLineOnTerminal,
-} from 'color-pen';
-import { orangePen, pen666 } from 'src/aided/pen';
-import { waiting } from 'src/aided/waiting';
+} from '@vvi/pen';
 import { dun } from '../aided/dog';
+import { orangePen, pen666 } from '../aided/pen';
+import { waiting } from '../aided/waiting';
 import { dataStore } from './data-store';
 import { getIsAliveByAddress } from './get-is-alive-by-address';
 

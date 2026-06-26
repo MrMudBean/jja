@@ -1,5 +1,5 @@
-import { ArgsArrMapItem } from 'a-command';
-import { isUndefined } from 'a-type-of-js';
+import { ArgsArrMapItem } from '@vvi/command';
+import { isUndefined } from '@vvi/is';
 import { command } from '../aided/command';
 import { dog } from '../aided/dog';
 import { packageParam } from '../types';

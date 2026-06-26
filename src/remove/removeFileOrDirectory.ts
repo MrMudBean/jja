@@ -1,6 +1,6 @@
 import { Stats } from 'node:fs';
-import { _p, isWindows, runOtherCode } from 'a-node-tools';
-import { hexPen } from 'color-pen';
+import { _p, isWindows, runOtherCode } from '@vvi/node';
+import { hexPen } from '@vvi/pen';
 import { removeData } from './removeData';
 import { removeResult } from './removeResult';
 

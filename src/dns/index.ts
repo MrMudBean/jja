@@ -1,13 +1,25 @@
 import dns from 'node:dns';
-import { copyTextToClipboard } from '@qqi/copy-text';
-import { ArgsArrMapItem } from 'a-command';
-import { _p, cursorAfterClear, cursorMoveUp, typewrite } from 'a-node-tools';
-import { isEmptyObject, isNull } from 'a-type-of-js';
-import { brightMagentaPen, cyanPen, greenPen, redPen } from 'color-pen';
-import { waiting } from 'src/aided/waiting';
-import { dnsParam } from 'src/types';
+import { ArgsArrMapItem } from '@vvi/command';
+import { copyTextToClipboard } from '@vvi/copy-text';
+import { isEmptyObject, isNull } from '@vvi/is';
+import {
+  _p,
+  cursorAfterClear,
+  cursorMoveUp,
+  isWindows,
+  typewrite,
+} from '@vvi/node';
+import {
+  brightMagentaPen,
+  cyanPen,
+  greenPen,
+  magentaPen,
+  redPen,
+} from '@vvi/pen';
 import { dog, dun } from '../aided/dog';
 import { orangePen, pen666 } from '../aided/pen';
+import { waiting } from '../aided/waiting';
+import type { dnsParam } from '../types';
 import { dataStore } from './data-store';
 import { getIsAliveByAddress } from './get-is-alive-by-address';
 import { getIdByDnsServer } from './getIdByDnsServer';
@@ -23,12 +35,14 @@ export async function dnsCommand(params: ArgsArrMapItem<dnsParam>) {
   waiting.destroyed();
 
   const { ips } = dataStore;
+  // 如果找到了域名的 ip 则打印结果，如果未找到
   if (Object.keys(ips).length > 0) {
     await printResult();
   } else {
     await printNotFound();
   }
 }
+
 /** 打印未找到 ip 地址 */
 async function printNotFound() {
   const { domain, port } = dataStore;
@@ -39,7 +53,7 @@ async function printNotFound() {
 }
 
 /** 通过 dns.lookup 获取本机配置的 ip */
-export async function getLocalIp() {
+async function getLocalIp() {
   const { domain, ips } = dataStore;
   waiting.run(`正在获取本地的 ${domain} 的 ip 地址`);
   try {
@@ -74,7 +88,7 @@ function handleResult(domain: string) {
 }
 
 /**  打印结果 */
-export async function printResult() {
+async function printResult() {
   const { domain, ips, port } = dataStore;
   /// 下面是结果总结
   await typewrite(`${brightMagentaPen`${domain}`} 域名解析结果：`);
@@ -100,10 +114,19 @@ export async function printResult() {
     redPen.italic.dim`${domain} 联通性接口判断为 ${port.toString()}`,
   );
   _p();
+  if (isWindows) {
+    _p(
+      pen666(
+        `请在文件「  ${magentaPen('C:\\Windows\\System32\\drivers\\etc\\hosts')} 」 中修改`,
+      ),
+    );
+  } else {
+    _p(pen666(`请执行修改：「 ${magentaPen('sudo vim /etc/hosts')} 」`));
+  }
 }
 
 /**  获取 ip */
-export async function getIp() {
+async function getIp() {
   const { domain, dnsServers } = dataStore;
   waiting.log(`${domain} ip 列表：`);
   const promiseList = dnsServers.map(server => getIdByDnsServer(server));
@@ -124,9 +147,7 @@ export async function getIp() {
  * ## 通过 dns 的 lookup 按照本地配置的 dns 来获取当前给定域名的反解析 ip
  * @param domain  给定的域名
  */
-export async function getAddressByLookup(
-  domain: string,
-): Promise<null | string[]> {
+async function getAddressByLookup(domain: string): Promise<null | string[]> {
   return new Promise(resolve => {
     dns.lookup(
       domain,

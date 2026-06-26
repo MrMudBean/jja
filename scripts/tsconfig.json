@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    // 关闭 nodenext , 改用 bundler 模样（完美兼容原生运行 TS + 三方包类型）
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    // 保留需要的核心配置
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "rootDir": "src",
+    "strict": true,
+    // 补充推荐配置，避免其他类型问题
+    "target": "esnext",
+    "esModuleInterop": true,
+    "skipLibCheck": true, // 跳过三方包的类型检测，避免报错
+    "isolatedModules": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "types": ["node"]
+  },
+  "include": ["src"]
+}

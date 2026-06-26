@@ -1,6 +1,6 @@
-import { colorLine } from 'a-node-tools';
-import { isEmptyArray, isUndefined } from 'a-type-of-js';
-import { randomPen } from 'color-pen';
+import { isEmptyArray, isUndefined } from '@vvi/is';
+import { colorLine } from '@vvi/node';
+import { randomPen } from '@vvi/pen';
 import { command } from './aided/command';
 import { dog } from './aided/dog';
 import { clearScreen } from './clearScreen';
@@ -8,7 +8,7 @@ import { dnsCommand } from './dns';
 import { git } from './git';
 import { packageManage } from './package';
 import { remove } from './remove';
-import { runOther } from './ron-other';
+import { runOther } from './run-other';
 import { update } from './update';
 
 const arg = command.args.$arrMap;
@@ -25,7 +25,7 @@ if (command.args.$isVoid) {
   command.end();
 } else if (isEmptyArray(command.args.$only)) {
   console.log(
-    `${command.args.$nomatch.map(e => randomPen(e)).join('、')} 不是有效的参数`,
+    `${command.args.$nomatch.map((e: any) => randomPen(e)).join('、')} 不是有效的参数`,
   );
   command.end();
 }

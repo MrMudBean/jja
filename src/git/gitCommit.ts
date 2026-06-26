@@ -1,6 +1,6 @@
-import { _p, getDirectoryBy, runOtherCode } from 'a-node-tools';
-import { hexPen } from 'color-pen';
-import { command } from '../aided/command';
+import { question } from '@vvi/command';
+import { _p, getDirectoryBy, runOtherCode } from '@vvi/node';
+import { hexPen } from '@vvi/pen';
 import { tagCommit } from './tagCommit';
 
 /** 整理 git
@@ -28,7 +28,7 @@ export async function gitCommit(
     if (!addResult.success) return console.log(addResult.error) != undefined;
     if (commitMessage.trim() == '') {
       commitMessage =
-        (await command.question({
+        (await question({
           text: '请输入提交信息',
         })) ?? '';
     }

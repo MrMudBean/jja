@@ -1,11 +1,11 @@
+import { isNull } from '@vvi/is';
 import {
   getDirectoryBy,
   PackageJson,
   pathJoin,
   readFileToJsonSync,
   runOtherCode,
-} from 'a-node-tools';
-import { isNull } from 'a-type-of-js';
+} from '@vvi/node';
 
 /**
  * 给提交打上 tag

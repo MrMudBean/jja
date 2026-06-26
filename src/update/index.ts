@@ -1,8 +1,8 @@
-import { ArgsArrMapItem } from 'a-command';
-import { isUndefined } from 'a-type-of-js';
-import { updateParams } from 'src/types';
+import { ArgsArrMapItem } from '@vvi/command';
+import { isUndefined } from '@vvi/is';
 import { command } from '../aided/command';
 import { dog } from '../aided/dog';
+import { updateParams } from '../types';
 import { data } from './data';
 import { wheel } from './wheel';
 

@@ -1,7 +1,6 @@
-import { terminalRegExp } from '@color-pen/static';
-import { copyTextToClipboard } from '@qqi/copy-text';
-import { _p } from 'a-node-tools';
-import { isNull } from 'a-type-of-js';
+import { copyTextToClipboard } from '@vvi/copy-text';
+import { isNull } from '@vvi/is';
+import { _p } from '@vvi/node';
 import {
   boldPen,
   cyanPen,
@@ -11,8 +10,9 @@ import {
   pen,
   randomPen,
   redPen,
-} from 'color-pen';
-import { Table } from 'colored-table';
+} from '@vvi/pen';
+import { terminalRegExp } from '@vvi/pen-static';
+import { Table } from '@vvi/table';
 import { boldGreenPen, pen666 } from '../../aided/pen';
 import {
   everyThreePlusBackslash,

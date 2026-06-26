@@ -1,4 +1,5 @@
-import { SelectionParamObjectData } from 'a-command';
+import { selection, SelectionParamObjectData } from '@vvi/command';
+import { isEmptyObject, isUndefined } from '@vvi/is';
 import {
   _p,
   getDirectoryBy,
@@ -6,10 +7,8 @@ import {
   pathJoin,
   readFileToJsonSync,
   runOtherCode,
-} from 'a-node-tools';
-import { isEmptyObject, isUndefined } from 'a-type-of-js';
-import { cyanPen, magentaPen } from 'color-pen';
-import { command } from './aided/command';
+} from '@vvi/node';
+import { cyanPen, magentaPen } from '@vvi/pen';
 import { dog } from './aided/dog';
 
 /**  执行 npm 命令  */
@@ -67,7 +66,7 @@ export async function runCode() {
       }));
   })();
 
-  const result = await command.selection(dataList);
+  const result = await selection(dataList);
 
   dog(result);
   if (isUndefined(result)) return;

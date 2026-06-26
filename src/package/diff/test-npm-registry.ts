@@ -1,7 +1,7 @@
 import https from 'node:https';
-import { npmRegistry } from 'a-node-tools';
-import { isFalse } from 'a-type-of-js';
-import { waiting } from 'src/aided/waiting';
+import { isFalse } from '@vvi/is';
+import { npmRegistry } from '@vvi/node';
+import { waiting } from '../../aided/waiting';
 /**  测试当前的 npm 的 registry 的  */
 export async function testNpmRegistry() {
   /**  测试域  */

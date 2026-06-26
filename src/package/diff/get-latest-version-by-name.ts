@@ -1,5 +1,5 @@
-import { getNpmPkgInfo } from 'a-node-tools';
-import { isNull } from 'a-type-of-js';
+import { isNull } from '@vvi/is';
+import { getNpmPkgInfo } from '@vvi/node';
 import { dog } from '../../aided/dog';
 import { diffData } from './data-store';
 

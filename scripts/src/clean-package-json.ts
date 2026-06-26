@@ -15,7 +15,6 @@ let packageJson = packageJsonResponse.content;
   'lint-staged',
   'private',
   'dependencies',
-  'packageManager',
 ].forEach(key => delete packageJson[key]);
 
 packageJson = {
@@ -23,19 +22,24 @@ packageJson = {
   author: {
     name: '泥豆君',
     email: 'Mr.MudBean@outlook.com',
-    url: 'https://mudbean.cn',
+    url: 'https://earthnut.dev',
   },
   description: '一些在终端的执行动作 🥜',
   license: 'MIT',
-  files: [
-    'bin.js',
-    'LICENSE',
-    'README.md',
-    'THIRD-PARTY-LICENSES.txt',
-    'CHANGELOG.md',
+  files: ['bin.js', 'LICENSE', 'README.md', 'THIRD-PARTY-LICENSES.txt'],
+  keywords: [
+    'jja',
+    'remove file',
+    'Remove file across platforms',
+    'Environmental parameters start',
+    'Check dependency for the latest version',
+    'Check domain resolution and connectivity',
+    '跨端移除文件',
+    '参数启动',
+    '检测依赖最新版本',
+    '检测域名解析及联通性',
   ],
-  keywords: ['jja', 'mudbean', 'vvi'],
-  homepage: 'https://npm.lmssee.com/jja',
+  homepage: 'https://earthnut.dev/npm/jja',
   bugs: {
     url: 'https://github.com/MrMudBean/jja/issues',
     email: 'Mr.MudBean@outlook.com',

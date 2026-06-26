@@ -1,5 +1,5 @@
-import { ArgsArrMapOptions } from 'a-command';
-import { dnsParam } from 'src/types';
+import { ArgsArrMapOptions } from '@vvi/command';
+import type { dnsParam } from '../types';
 
 /**
  *  记录值的类型

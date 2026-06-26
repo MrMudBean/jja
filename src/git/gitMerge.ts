@@ -1,6 +1,6 @@
-import { runOtherCode } from 'a-node-tools';
-import { isBusinessEmptyString, isUndefined } from 'a-type-of-js';
-import { command } from '../aided/command';
+import { ERROR, question, selection } from '@vvi/command';
+import { isBusinessEmptyString, isUndefined } from '@vvi/is';
+import { runOtherCode } from '@vvi/node';
 
 /**
  * 合并两个分支
@@ -11,16 +11,16 @@ export async function gitMerge(params: string) {
     const branchList = await runOtherCode('git branch -a');
     console.log(branchList.data);
     params =
-      (await command.question({
+      (await question({
         text: '请输入要合并分支的名称',
       })) ?? '';
   }
 
   if (isBusinessEmptyString(params)) {
-    return command.ERROR('没有获取到要合并的分支');
+    return ERROR('没有获取到要合并的分支');
   }
 
-  const result = await command.selection({
+  const result = await selection({
     data: [
       {
         label: '正常快进合并',
@@ -39,7 +39,7 @@ export async function gitMerge(params: string) {
   });
 
   if (isUndefined(result)) {
-    command.ERROR('您选择退出合并');
+    ERROR('您选择退出合并');
     return;
   }
 

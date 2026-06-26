@@ -1,7 +1,7 @@
-import { ArgsArrMapOptions } from 'a-command';
-import { intersection } from 'a-js-tools';
-import { isUndefined } from 'a-type-of-js';
-import { dnsParam } from 'src/types';
+import { ArgsArrMapOptions } from '@vvi/command';
+import { isUndefined } from '@vvi/is';
+import { intersection } from '@vvi/utils';
+import type { dnsParam } from '../types';
 import { DataStore, rrtype } from './types';
 
 /** 可用的记录值类型 */

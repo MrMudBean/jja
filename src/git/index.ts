@@ -1,8 +1,8 @@
-import { ArgsArrMapItem } from 'a-command';
-import { isPlainObject, isUndefined } from 'a-type-of-js';
-import { gitParam } from 'src/types.js';
+import { ArgsArrMapItem } from '@vvi/command';
+import { isPlainObject, isUndefined } from '@vvi/is';
 import { command } from '../aided/command.js';
 import { dog } from '../aided/dog';
+import type { gitParam } from '../types';
 import { wheel } from './wheel.js';
 
 /**

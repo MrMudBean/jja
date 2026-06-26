@@ -74,7 +74,6 @@ jobs:
       - name: 发布到 npm
         env:
           NPM_CONFIG_USERCONFIG: /dev/null # 强制忽略本地配置
-          # NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         run: |
           chmod +x ./scripts/pub.sh
           ./scripts/pub.sh

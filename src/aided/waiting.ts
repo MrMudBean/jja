@@ -1,4 +1,4 @@
-import { waitingTips } from 'a-node-tools';
+import { waitingTips } from '@vvi/node';
 import { command } from './command';
 
 /**  等待  */

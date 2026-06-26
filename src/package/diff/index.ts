@@ -1,6 +1,6 @@
-import { _p, colorLine, npmRegistry } from 'a-node-tools';
-import { isNull } from 'a-type-of-js';
-import { command } from '../../aided/command';
+import { INFO } from '@vvi/command';
+import { isNull } from '@vvi/is';
+import { _p, colorLine, npmRegistry } from '@vvi/node';
 import { dog } from '../../aided/dog';
 import { orangePen, pen399 } from '../../aided/pen';
 import { diffData } from './data-store';
@@ -47,7 +47,7 @@ export async function diffPackage(
       (online && online.time.modified) || '',
     ).toLocaleString();
 
-    command.INFO(`最后的发布时间为： ${publishTime.toString()}`);
+    INFO(`最后的发布时间为： ${publishTime.toString()}`);
     colorLine();
   }
 

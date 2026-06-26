@@ -5,9 +5,8 @@ import {
   pathJoin,
   readFileToJsonSync,
   runOtherCode,
-} from 'a-node-tools';
-
-import { cyanPen, greenPen } from 'color-pen';
+} from '@vvi/node';
+import { cyanPen, greenPen } from '@vvi/pen';
 import { cursorMoveUp } from './utils';
 
 /**

@@ -1,4 +1,4 @@
-import { _p } from 'a-node-tools';
+import { _p } from '@vvi/node';
 
 /**
  * 打印清理结果

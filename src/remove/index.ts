@@ -1,6 +1,6 @@
-import { ArgsArrMapItem } from 'a-command';
-import { _p, isWindows } from 'a-node-tools';
-import { pen } from 'color-pen';
+import { ArgsArrMapItem } from '@vvi/command';
+import { _p, isWindows } from '@vvi/node';
+import { pen } from '@vvi/pen';
 import { dog } from '../aided/dog';
 import { removeParam } from '../types';
 import { beforeRemove } from './beforeRemove';

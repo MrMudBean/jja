@@ -1,10 +1,10 @@
-import { Command } from 'a-command';
-import { hexPen, randomPen, redPen } from 'color-pen';
+import { Args } from '@vvi/command';
+import { hexPen, randomPen, redPen } from '@vvi/pen';
 import { ArgsArrMapItemList } from '../types';
 import { dog } from './dog';
 
 // 初始化一个命令
-export const command = new Command<ArgsArrMapItemList>('jja');
+export const command = new Args<ArgsArrMapItemList>('jja');
 
 command
   .bind({

@@ -1,11 +1,11 @@
+import { isNull, isUndefined } from '@vvi/is';
 import {
   getDirectoryBy,
   getNpmPkgInfo,
   PackageJson,
   pathJoin,
   readFileToJsonSync,
-} from 'a-node-tools';
-import { isNull, isUndefined } from 'a-type-of-js';
+} from '@vvi/node';
 import { dog } from '../../aided/dog';
 import { diffData } from './data-store';
 

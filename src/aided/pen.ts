@@ -1,4 +1,4 @@
-import { boldPen, hexPen } from 'color-pen';
+import { boldPen, hexPen } from '@vvi/pen';
 
 /**  绿色粗体的笔  */
 export const boldGreenPen = boldPen.green;

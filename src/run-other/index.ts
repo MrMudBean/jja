@@ -8,7 +8,7 @@
  * @copyright  2026 ©️ MrMudBean
  * @since 2026-01-12 07:26
  * @version 2.3.21
- * @lastModified 2026-01-12 10:15
+ * @lastModified 2026-06-25 15:57
  */
 /****************************************************************************
  *  @Author earthnut
@@ -20,10 +20,9 @@
  *
  ****************************************************************************/
 import { spawn } from 'node:child_process';
-import { ArgsArrMapItem } from 'a-command';
-import { isUndefined, isZero } from 'a-type-of-js';
-import { dog } from 'src/aided/dog';
-import { command } from '../aided/command';
+import { ArgsArrMapItem, ERROR, SUCCESS } from '@vvi/command';
+import { isUndefined, isZero } from '@vvi/is';
+import { dog } from '../aided/dog';
 
 /**
  * 导出执行其他代码
@@ -43,7 +42,7 @@ export async function runOther(runOther: ArgsArrMapItem<undefined>) {
     if (equalSignIndex === -1) break;
     // 等号在开头
     if (equalSignIndex === 0) {
-      command.ERROR(`未识别 "${currentItem}" 且已移除该项 ❌`);
+      ERROR(`未识别 "${currentItem}" 且已移除该项 ❌`);
       value[i] = ''; // 设置为空
       continue;
     }
@@ -54,7 +53,7 @@ export async function runOther(runOther: ArgsArrMapItem<undefined>) {
     ];
 
     process.env[_key] = _value;
-    command.SUCCESS(`设置环境变量 ${_key}=${_value} ✅`);
+    SUCCESS(`设置环境变量 ${_key}=${_value} ✅`);
     value[i] = ''; // 设置为空
   }
 

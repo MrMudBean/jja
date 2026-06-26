@@ -1,5 +1,5 @@
-import { Dog } from '@qqi/log';
-import { isFalse } from 'a-type-of-js';
+import { isFalse } from '@vvi/is';
+import { Dog } from '@vvi/log';
 
 /**  dev log  */
 export const dog = new Dog({

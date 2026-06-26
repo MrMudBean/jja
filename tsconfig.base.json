@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": ".",
     "jsx": "preserve",
     "strict": true,
     "target": "ESNext",
@@ -11,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
     "lib": ["ESNext", "DOM"],
+    "types": ["node"],
     "sourceMap": false
   }
 }

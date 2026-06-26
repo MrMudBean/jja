@@ -6,7 +6,7 @@ import {
   isTTY,
   isWindows,
   runOtherCode,
-} from 'a-node-tools';
+} from '@vvi/node';
 import { dog } from './aided/dog';
 
 /** 导出清理屏幕 */

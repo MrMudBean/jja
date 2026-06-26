@@ -1,10 +1,10 @@
-import { prefixList } from 'a-command';
-import { _p, PackageJson, pathJoin, readFileToJsonSync } from 'a-node-tools';
-import { isNull, isUndefined } from 'a-type-of-js';
-import { cyanPen, greenPen } from 'color-pen';
-import { waiting } from 'src/aided/waiting';
+import { prefixList } from '@vvi/command';
+import { isNull, isUndefined } from '@vvi/is';
+import { _p, PackageJson, pathJoin, readFileToJsonSync } from '@vvi/node';
+import { cyanPen, greenPen } from '@vvi/pen';
 import { dog } from '../../aided/dog';
 import { pen399 } from '../../aided/pen';
+import { waiting } from '../../aided/waiting';
 import { diffData } from './data-store';
 import { getLatestVersionByName } from './get-latest-version-by-name';
 import { testNpmRegistry } from './test-npm-registry';
