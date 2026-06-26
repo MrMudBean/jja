@@ -8,7 +8,7 @@ if (!packageJsonResponse) {
 }
 
 let packageJson = packageJsonResponse.content;
-
+let dependencies = packageJson.dependencies;
 [
   'scripts',
   'devDependencies',
@@ -36,6 +36,7 @@ packageJson = {
   ],
   keywords: ['jja', 'mudbean', 'vvi'],
   homepage: 'https://npm.lmssee.com/jja',
+  dependencies,
   bugs: {
     url: 'https://github.com/MrMudBean/jja/issues',
     email: 'Mr.MudBean@outlook.com',
