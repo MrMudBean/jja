@@ -22,7 +22,7 @@ packageJson = {
   author: {
     name: '泥豆君',
     email: 'Mr.MudBean@outlook.com',
-    url: 'https://earthnut.dev',
+    url: 'https://mudbean.cn',
   },
   description: '一些在终端的执行动作 🥜',
   license: 'MIT',
@@ -39,7 +39,7 @@ packageJson = {
     '检测依赖最新版本',
     '检测域名解析及联通性',
   ],
-  homepage: 'https://earthnut.dev/npm/jja',
+  homepage: 'https://npm.lmssee.com/jja',
   bugs: {
     url: 'https://github.com/MrMudBean/jja/issues',
     email: 'Mr.MudBean@outlook.com',

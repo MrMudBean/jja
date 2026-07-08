@@ -8,17 +8,8 @@
  * @copyright  2026 ©️ MrMudBean
  * @since 2026-01-12 07:26
  * @version 2.3.21
- * @lastModified 2026-06-25 15:57
+ * @lastModified 2026-07-08 09:48
  */
-/****************************************************************************
- *  @Author earthnut
- *  @Email earthnut.dev@outlook.com
- *  @ProjectName jja
- *  @FileName runOther.ts
- *  @CreateDate  周四  06/05/2025
- *  @Description 执行代码，使用 Unix 的模式创建环境变量
- *
- ****************************************************************************/
 import { spawn } from 'node:child_process';
 import { ArgsArrMapItem, ERROR, SUCCESS } from '@vvi/command';
 import { isUndefined, isZero } from '@vvi/is';
