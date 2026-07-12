@@ -1,7 +1,7 @@
 {
   "name": "jja",
   "type": "module",
-  "version": "2.5.3",
+  "version": "2.5.4",
   "private": true,
   "scripts": {
     "test": "node --experimental-strip-types ./scripts/build.ts",
@@ -10,15 +10,17 @@
     "clean:package": "node scripts/clean-package-json.js",
     "lint": "npx eslint . --fix",
     "diff": "pnpm run build && node ./dist/bin.js pkg --diff=淘宝",
-    "dev": "jja rm dist && pnpm run build && a_command_dev=all jja_dev=all node dist/bin.js run PORT=9463 NODE_OPTIONS='--max-old-space-size=768' ls ",
+    "dev": "jja rm dist && pnpm run build && jja_dev=all node dist/bin.js pkg --diff",
     "beautify": "prettier . --write",
     "push:version": "gvv",
     "push": "gvv",
     "vjj": "vjj",
     "prepublishOnly": "pjj"
   },
-  "overrides": {
-    "eslint": "^9"
+  "jja": {
+    "pkg": [
+      "eslint"
+    ]
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

@@ -2,12 +2,12 @@ import { isNull, isUndefined } from '@vvi/is';
 import {
   getDirectoryBy,
   getNpmPkgInfo,
-  PackageJson,
   pathJoin,
   readFileToJsonSync,
 } from '@vvi/node';
 import { dog } from '../../aided/dog';
 import { diffData } from './data-store';
+import type { LocalInfo } from './types';
 
 /**
  *
@@ -27,13 +27,9 @@ export async function getExecuteCatalogPackageVersion(): Promise<void> {
     return;
   }
   // 获取文件
-  const packageInfo = readFileToJsonSync<
-    PackageJson & {
-      overrides: {
-        [x: string]: string;
-      };
-    }
-  >(pathJoin(currentWordDirectory, 'package.json'));
+  const packageInfo = readFileToJsonSync<LocalInfo>(
+    pathJoin(currentWordDirectory, 'package.json'),
+  );
 
   if (isNull(packageInfo)) {
     dog.error('未找到当前包的 package.json 文件，该事件发生的概率极低');
@@ -42,10 +38,7 @@ export async function getExecuteCatalogPackageVersion(): Promise<void> {
 
   /**  包名  */
   const name = packageInfo.name || '';
-
   const inlineInfo = await getNpmPkgInfo(name, diffData.registry, 9800);
-
   diffData.local = packageInfo;
-
   diffData.online = inlineInfo.data; // 并不关心 null 不 null
 }

@@ -1,8 +1,40 @@
 # jolly job aid
 
+## 2.5.4 (2026-7-12)
+
 ## 2.5.3 (2026-7-8)
 
 - 维护信息
+- npm v11 对 "package.json" 文件进行了强验证，如果 "package.json" 中的 "override" 锁定的依赖不得是显式声明的包，否则将报错
+  
+```bash
+npm error code EOVERRIDE
+npm error Override for eslint@^9.39.4 conflicts with direct dependency
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-07-08T02_16_44_926Z-debug-0.log
+Error: Process completed with exit code 1.
+```
+
+所以，建议锁定版本的包放置在 "package.json" 的 `jja.pkg` 数组中：
+
+```json
+{
+    "jja": {
+        "pkg": ["example"]
+    }
+}
+```
+
+如果想标记某包的缘由，可以使用对象的形式：
+
+```json
+{
+    "jja": {
+        "pkg": {
+            "example": "该包升级将导致 xxx 问题"
+        }
+    }
+}
+```
 
 ## 2.5.2 (2026-6-28)
 
