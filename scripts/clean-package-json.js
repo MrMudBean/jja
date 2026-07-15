@@ -16,6 +16,8 @@ let dependencies = packageJson.dependencies;
   'private',
   'dependencies',
   'packageManager',
+  'jja',
+  'type',
 ].forEach(key => delete packageJson[key]);
 
 packageJson = {

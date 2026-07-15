@@ -10,6 +10,8 @@ import {
 } from '@vvi/is';
 import type { DiffData } from './types';
 
+let isLogLockInfo: boolean = false;
+
 /**
  * # diff 数仓
  */
@@ -37,10 +39,13 @@ export const diffData: DiffData = {
         skipList = skipList.concat(Object.keys(pkg));
       }
     }
+    if (!isLogLockInfo) {
+      WARN(`${skipList.join('、')} 已被锁定`);
+      isLogLockInfo = true;
+    }
     /// 循环遍历
     for (const key in list) {
       if (skipList.includes(key)) {
-        WARN(`${key} 被锁定在`);
         continue;
       }
       const element = list[key];
